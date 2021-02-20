@@ -1,3 +1,4 @@
+const TWITCH_API_URL   = 'https://api.twitch.tv/helix';
 const TWITCH_AUTH_URL  = 'https://id.twitch.tv/oauth2/authorize';
 const TWITCH_TOKEN_URL = 'https://id.twitch.tv/oauth2/token';
 const TWITCH_CLIENT_ID = '';

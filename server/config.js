@@ -1,3 +1,5 @@
+const TWITCH_AUTH_URL  = 'https://id.twitch.tv/oauth2/authorize';
+const TWITCH_TOKEN_URL = 'https://id.twitch.tv/oauth2/token';
 const TWITCH_CLIENT_ID = '';
 const TWITCH_SECRET    = '';
 const SESSION_SECRET   = '';

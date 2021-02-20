@@ -9,6 +9,9 @@ const DB               = '';
 const PORT             = process.env.PORT || 5000;
 
 module.exports = {
+  TWITCH_API_URL,
+  TWITCH_AUTH_URL,
+  TWITCH_TOKEN_URL,
   TWITCH_CLIENT_ID,
   TWITCH_SECRET,
   SESSION_SECRET,

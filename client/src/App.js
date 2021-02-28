@@ -1,19 +1,15 @@
-import React, {useState} from 'react'
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
-import Login from './components/buttons/Login';
+import Header from './components/containers/Header';
+import Body from './components/containers/Body';
+import Footer from './components/containers/Footer';
 
 function App() {
-  const [result, setResult] = useState({});
-
-  function showResult(result) {
-    setResult(result);
-  };
-
   return (
     <div className="App">
-      <Login handleLogin={showResult} />
-      <div>{JSON.stringify(result)}</div>
+      <Header />
+      <Body />
+      <Footer />
     </div>
   );
 }

@@ -2,10 +2,12 @@ const express        = require('express');
 const passport       = require('passport');
 const OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
 const request        = require('request');
+const fetch          = require('node-fetch');
 const config         = require('../config');
 const db             = require('../database/index');
 
 const router = express.Router();
+let user;
 
 function handleError(err) {
   if (err) {
@@ -24,11 +26,11 @@ db.mongoose
   });
 
 OAuth2Strategy.prototype.userProfile = (accessToken, callback) => {
-  var options = {
+  const options = {
     url: config.TWITCH_API_URL + '/users',
     method: 'GET',
     headers: {
-      'Client-ID': config.TWITCH_CLIENT_ID,
+      'Client-Id': config.TWITCH_CLIENT_ID,
       'Accept': 'application/vnd.twitchtv.v5+json',
       'Authorization': 'Bearer ' + accessToken
     }
@@ -52,19 +54,21 @@ passport.use('twitch', new OAuth2Strategy({
     state: true
   },
   (accessToken, refreshToken, profile, callback) => {
-    profile.accessToken = accessToken;
-    profile.refreshToken = refreshToken;
+    user = {
+      accessToken: accessToken,
+      refreshToken: refreshToken,
+      ...profile.data[0]
+    }
 
     db.models.UserModel
       .find({'id': profile.data[0].id})
       .exec((err, result) => {
         if (!err && result.length == 0) {
-          db.models.UserModel
-            .create({ ...profile.data[0] }, (err) => handleError(err));
+          db.models.UserModel.create({ ...profile.data[0] }, handleError);
         }
       });
 
-    callback(null, profile);
+    callback(null, user);
   }
 ));
 
@@ -76,13 +80,42 @@ passport.deserializeUser((user, callback) => {
     callback(null, user);
 });
 
-router.get('/auth', passport.authenticate('twitch', { scope: 'user_read' }));
+router.get('/login', passport.authenticate('twitch', { scope: 'user_read' }));
 
-router.get('/auth/callback',
+router.get('/login/callback',
   passport.authenticate('twitch',
-    { successRedirect: '/', failureRedirect: '/failure' }
+    {
+      successRedirect: 'http://localhost:5000/',
+      failureRedirect: 'http://localhost:5000/'
+    }
   )
 );
+
+router.get('/logout', (req, res) => {
+  if (user) {
+    const url = 'https://id.twitch.tv/oauth2/revoke' +
+                `?client_id=${config.TWITCH_CLIENT_ID}` +
+                `&token=${user.accessToken}`;
+    const options = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'x-www-form-urlencoded',
+      }
+    };
+
+    fetch(url, options)
+      .then(response => response.ok && (user = null) || { active: user })
+      .then(result => res.send(result))
+      .catch(err => console.log(err) || res.send({ active: user }));
+  } else {
+    res.send({ active: user })
+  }
+});
+
+router.get('/user', (req, res) => {
+  res.send({ active: user });
+});
 
 router.get('/users', (req, res) => {
   db.models.UserModel
@@ -92,6 +125,46 @@ router.get('/users', (req, res) => {
         res.send(result);
       }
     });
+});
+
+router.get('/streams', (req, res) => {
+  if (user) {
+    const url = 'https://api.twitch.tv/helix/streams';
+    const options = {
+      headers: {
+        'Client-Id': config.TWITCH_CLIENT_ID,
+        'Authorization': 'Bearer ' + user.accessToken,
+        'Accept': 'application/json'
+      }
+    };
+
+    fetch(url, options)
+      .then(response => response.json())
+      .then(result => res.send(result));
+  } else {
+    res.send({message: 'No valid user session'});
+  }
+});
+
+router.get('/channel', (req, res) => {
+  if (user) {
+    const url = 'https://api.twitch.tv/helix/channels' +
+                `?broadcaster_id=${user.id}`;
+    const options = {
+      headers: {
+        'Client-Id': config.TWITCH_CLIENT_ID,
+        'Authorization': 'Bearer ' + user.accessToken,
+        'Content-Type': 'x-www-form-urlencoded',
+        'Accept': 'application/json'
+      }
+    };
+
+    fetch(url, options)
+      .then(response => response.json())
+      .then(result => res.send(result));
+  } else {
+    res.send({message: 'No valid user session'});
+  }
 });
 
 module.exports = { router, passport };

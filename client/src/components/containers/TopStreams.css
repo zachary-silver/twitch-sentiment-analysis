@@ -1,0 +1,15 @@
+.TopStreams {
+}
+
+.TopStreamsGraphDiv {
+  height: 88%;
+}
+
+.TopStreamsButton {
+  width: 100%;
+}
+
+.TopStreamsButtonDiv {
+  display: flex;
+  height: 10%;
+}

@@ -1,7 +1,4 @@
 .Body {
-  height: 90vh;
-}
-
-div.Body {
-  border: 2px solid black;
+  display: flex;
+  justify-content: center;
 }

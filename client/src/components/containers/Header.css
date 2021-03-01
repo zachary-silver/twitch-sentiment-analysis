@@ -1,19 +1,6 @@
 .Header {
-  height: 5vh;
   display: flex;
   justify-content: space-between;
-  background: #212126;
-}
-
-div.Header {
-  border: 2px solid black;
-}
-
-div.Header img {
-  max-height: 60%;
-  position: relative;
-  left: 5%;
-  top: 20%;
 }
 
 div.Header div {
@@ -22,22 +9,30 @@ div.Header div {
   display: flex;
 }
 
-div.Header a {
+div.ImageDiv img {
+  max-height: 60%;
+  position: relative;
+  left: 2%;
+  top: 20%;
+}
+
+div.ImageDiv a {
   display: flex;
   justify-content: left;
   width: 100%;
 }
 
-div.Header div.LoginDiv {
+div.LoginDiv {
   justify-content: right;
 }
 
-div.Header div.UserDiv {
+div.UserDiv {
   justify-content: center;
 }
 
-div.Header div.UserDiv p {
+div.UserDiv p {
   display: flex;
   justify-content: center;
   margin: auto;
+  color: white;
 }

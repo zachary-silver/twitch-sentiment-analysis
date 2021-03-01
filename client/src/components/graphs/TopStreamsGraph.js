@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import twitch from '../../themes'
 // install (please make sure versions match peerDependencies)
 // yarn add @nivo/core @nivo/bar
 import { ResponsiveBar } from '@nivo/bar'
@@ -7,26 +8,50 @@ import { ResponsiveBar } from '@nivo/bar'
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
-const BarChart = (data) => (
+const theme = {
+  axis: {
+    fontSize: "14px",
+    tickColor: "#eee",
+    ticks: {
+      line: {
+        stroke: "#555555"
+      },
+      text: {
+        fill: "#ffffff"
+      }
+    },
+    legend: {
+      text: {
+        fill: "#aaaaaa"
+      }
+    }
+  },
+  grid: {
+    line: {
+      stroke: "#555555"
+    }
+  }
+};
+const BarChart = (data, max) => (
 	<ResponsiveBar
 		data={data}
 		keys={['viewers']}
-		indexBy='streamer'
+		indexBy='stream'
 		margin={{ top: 50, right: 130, bottom: 50, left: 130 }}
 		padding={0.3}
-		valueScale={{ type: 'linear' }}
+		valueScale={{ type: 'linear', min: 0, max: max }}
 		indexScale={{ type: 'band', round: true }}
-		colors={{ scheme: 'purpleRed_green' }}
+    colors={[twitch.lightText]}
 		defs={[]}
 		fill={[]}
-		borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
+		borderColor={'white'}
 		axisTop={null}
 		axisRight={null}
 		axisBottom={{
 			tickSize: 5,
 			tickPadding: 1,
 			tickRotation: 0,
-			legend: 'streamer',
+			legend: 'stream',
 			legendPosition: 'middle',
 			legendOffset: 32
 		}}
@@ -40,22 +65,25 @@ const BarChart = (data) => (
 		}}
 		labelSkipWidth={12}
 		labelSkipHeight={12}
-		labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
+    labelTextColor={'white'}
 		legends={[]}
 		animate={true}
 		motionStiffness={90}
 		motionDamping={15}
+    theme={theme}
 	/>
 );
 
-function Streamers(props) {
-  if (props.results.length > 0) {
-    return BarChart(props.results.map((streamer, index) => {
-      return { streamer: streamer.user_name, viewers: streamer.viewer_count };
-    }));
-  } else {
-    return (<div></div>);
-  }
+function TopStreamsGraph(props) {
+  const max = props.streams.length > 0
+    ? Math.max.apply(Math, props.streams.map((stream) => stream.viewer_count))
+    : 100;
+
+  return (
+    BarChart(props.streams.map((stream, index) => {
+      return { stream: stream.user_name, viewers: stream.viewer_count };
+    }).slice(0, 10), max)
+  );
 }
 
-export default Streamers;
+export default TopStreamsGraph;

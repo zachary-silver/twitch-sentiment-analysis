@@ -1,5 +1,6 @@
 .Login {
   position: relative;
   right: 2%;
-  top: 2%;
+  top: 10%;
+  max-height: 80%
 }

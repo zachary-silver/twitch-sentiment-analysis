@@ -167,4 +167,23 @@ router.get('/channel', (req, res) => {
   }
 });
 
+router.get('/games', (req, res) => {
+  if (user) {
+    const url = 'https://api.twitch.tv/helix/games/top';
+    const options = {
+      headers: {
+        'Client-Id': config.TWITCH_CLIENT_ID,
+        'Authorization': 'Bearer ' + user.accessToken,
+        'Accept': 'application/json'
+      }
+    };
+
+    fetch(url, options)
+      .then(response => response.json())
+      .then(result => res.send(result));
+  } else {
+    res.send({message: 'No valid user session'});
+  }
+});
+
 module.exports = { router, passport };

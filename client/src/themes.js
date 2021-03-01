@@ -1,6 +1,7 @@
 const twitch = {
-  darkBackground: '#212126',
-  lightText: '#9f61fa'
+  lightBackground: '#212126',
+  darkBackground: '#18181c',
+  lightText: '#8a3bff'
 };
 
 export default twitch;

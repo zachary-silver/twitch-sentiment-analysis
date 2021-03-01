@@ -1,9 +1,9 @@
 import React from 'react'
 import './Header.css'
-import Login from '../buttons/Login'
+import LoginButton from '../buttons/LoginButton'
 import logo from '../../twitch_icon.png';
 
-function Header() {
+function Header(props) {
   return (
     <div className="Header">
       <div className="ImageDiv">
@@ -12,10 +12,12 @@ function Header() {
         </a>
       </div>
       <div className="UserDiv">
-        <p>Creamyzor</p>
+        <p>{props.session.active?.display_name}</p>
       </div>
       <div className="LoginDiv">
-        <Login />
+        <LoginButton
+          session={props.session}
+          updateSession={props.updateSession}/>
       </div>
     </div>
   );

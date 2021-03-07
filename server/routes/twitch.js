@@ -167,13 +167,16 @@ router.get('/channel', (req, res) => {
   }
 });
 
-router.get('/games', (req, res) => {
+router.get('/videos', (req, res) => {
   if (user) {
-    const url = 'https://api.twitch.tv/helix/games/top';
+    const user_id = 71092938;
+    const url = 'https://api.twitch.tv/helix/videos' +
+                `?user_id=${user_id}`;
     const options = {
       headers: {
         'Client-Id': config.TWITCH_CLIENT_ID,
         'Authorization': 'Bearer ' + user.accessToken,
+        'Content-Type': 'x-www-form-urlencoded',
         'Accept': 'application/json'
       }
     };

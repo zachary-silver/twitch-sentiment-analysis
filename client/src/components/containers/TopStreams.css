@@ -2,7 +2,7 @@
 }
 
 .TopStreamsGraphDiv {
-  height: 88%;
+  height: 93%;
 }
 
 .TopStreamsButton {
@@ -11,5 +11,5 @@
 
 .TopStreamsButtonDiv {
   display: flex;
-  height: 10%;
+  height: 5%;
 }

@@ -24,9 +24,7 @@ client.on('connected', onConnectedHandler);
 client.connect();
 
 function onMessageHandler(target, context, msg, self) {
-  if (self) { // Ignore own messages
-    return;
-  }
+  if (self) { return; } // Ignore own messages
 
   const message = {
     channel: target,

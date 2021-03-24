@@ -1,0 +1,36 @@
+.Legend {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.Legend span {
+  color: white;
+}
+
+.PositiveLabel, .NeutralLabel, .NegativeLabel {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.LabelColorBox {
+  height: 40%;
+  width: 10%;
+  margin-right: 2%;
+  outline: 1px solid black;
+}
+
+.PositiveLabel .LabelColorBox {
+  background-color: #407771;
+}
+
+.NeutralLabel .LabelColorBox {
+  background-color: #949c88;
+}
+
+.NegativeLabel .LabelColorBox {
+  background-color: #8a4a43;
+}

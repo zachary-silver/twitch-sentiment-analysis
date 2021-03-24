@@ -105,7 +105,10 @@ router.get('/logout', (req, res) => {
     };
 
     fetch(url, options)
-      .then(response => response.ok && (user = null) || { active: user })
+      .then(response => {
+        user = null;
+        return { active: user }
+      })
       .then(result => res.send(result))
       .catch(err => console.log(err) || res.send({ active: user }));
   } else {

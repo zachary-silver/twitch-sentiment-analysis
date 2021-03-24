@@ -1,0 +1,79 @@
+.SentimentGraph {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Legend {
+  height: 5%;
+  width: 100%;
+}
+
+.StackedLineGraph {
+  height: 94%;
+  width: 100%;
+}
+
+.SentimentGraph .Options, .SentimentGraph .Stats {
+  height: 8%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #212126;
+  outline: 1px solid black;
+}
+
+.SentimentGraph span {
+  color: white;
+}
+
+.SentimentGraph .Stats div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  flex-basis: 100%;
+  outline: 1px solid black;
+}
+
+.SentimentGraph .Graph {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #212126;
+  outline: 1px solid black;
+}
+
+.TimeFrame, .Retrieve {
+  height: 100%;
+  width: 10%;
+  flex-basis: 100%;
+}
+
+.TimeFrame button, .Retrieve button {
+  height: 100%;
+  width: 100%;
+  border: none;
+  color: white;
+  background: transparent;
+  outline: 1px solid black;
+}
+
+.TimeFrame button:hover, .Retrieve button:hover {
+  color: #8a3bff;
+  cursor: pointer;
+}
+
+.DateTimePicker {
+  height: 100%;
+  align-items: center;
+}
+
+.DateTime {
+  outline: 1px solid black;
+  flex-basis: 100%;
+  height: 100%;
+}

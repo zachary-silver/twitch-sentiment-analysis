@@ -59,7 +59,6 @@ function SentimentGraph(props) {
   }
 
   function getCountsOfType(data, type) {
-    console.log(data);
     return data
       .filter(element => element.id.match(type))
       .reduce((total, curr) => {

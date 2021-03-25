@@ -1,5 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import './SentimentGraph.css'
+import SentimentGraphOptions from './SentimentGraphOptions'
+import SentimentGraphStats from './SentimentGraphStats'
 import StackedLineGraph from '../graphs/StackedLineGraph'
 import Legend from '../Legend'
 import DateTimePicker from 'react-datetime-picker'
@@ -18,17 +20,13 @@ function SentimentGraph(props) {
   const [dateTime, setDateTime] = useState(null);
   const [timeFrame, setTimeFrame] = useState(Hour);
 
-  const currentDate = new Date();
+  const graphData = getGraphData(messages, timeFrame, dateTime);
 
-  const data = getGraphData(messages, timeFrame, dateTime);
-
-  const positiveMessages = getCountsOfType(data, 'positive');
-  const negativeMessages = getCountsOfType(data, 'negative');
-  const neutralMessages = getCountsOfType(data, 'neutral');
-  const totalMessages = positiveMessages + negativeMessages + neutralMessages;
-  const netMessageSentiment = totalMessages > 0
-    ? ((positiveMessages - negativeMessages) / totalMessages).toFixed(2)
-    : 0;
+  async function getMessages(dateTime) {
+    const minDate = dateTime;
+    const maxDate = new Date(minDate.getTime() + 7 * msInDay + msInDay);
+    setMessages(getRandomMessages(minDate, maxDate));
+  }
 
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -44,7 +42,7 @@ function SentimentGraph(props) {
     const sentiments = ['positive', 'negative', 'neutral'];
     let messages = [];
 
-    for (let i = 0; i < 100000; i++) {
+    for (let i = 0; i < 1000; i++) {
       const sentiment = getRandomInt(3);
       const date = getRandomDate(minDate, maxDate);
       messages.push({
@@ -58,17 +56,6 @@ function SentimentGraph(props) {
 
   function getTimeBetween(a, b, units) {
     return Math.abs(a.getTime() - b.getTime()) / units;
-  }
-
-  function getCountsOfType(data, type) {
-    return data
-      .filter(element => element.id.match(type))
-      .reduce((total, curr) => {
-        return total + curr.data
-          .reduce((total, curr) => {
-            return total + curr['y'];
-          }, 0)
-      }, 0);
   }
 
   function getUnits(timeFrame) {
@@ -97,10 +84,23 @@ function SentimentGraph(props) {
     }
   }
 
-  async function retrieveMessages(dateTime) {
-    const minDate = dateTime;
-    const maxDate = new Date(minDate.getTime() + 7 * msInDay + msInDay);
-    setMessages(getRandomMessages(minDate, maxDate));
+  function getCountsData(counts) {
+    return Object.entries(counts).map(([time, count]) => {
+      return { 'x': time, 'y': count };
+    })
+  }
+
+  function getSentimentColor(sentiment) {
+    switch (sentiment) {
+      case 'positive':
+        return '#71bdb4';
+      case 'negative':
+        return '#a35a52';
+      case 'neutral':
+        return '#bab7a2';
+      default:
+        console.error(`getSentimentColor(${sentiment}) fell through switch!`);
+    }
   }
 
   function filterMessages(messages, timeFrame, dateTime) {
@@ -117,7 +117,7 @@ function SentimentGraph(props) {
         timeRange = msInWeek + msInDay;
         break;
       default:
-        console.error(`filterMessages(, ${timeFrame}, ) fell through switch!`);
+        console.error(`filterMessages(${timeFrame}) fell through switch!`);
     }
 
     return messages.filter(msg => {
@@ -130,119 +130,53 @@ function SentimentGraph(props) {
     if (messages.length == 0) { return []; }
 
     messages = filterMessages(messages, timeFrame, dateTime);
+    let sentimentCounts = { positive: {}, negative: {}, neutral: {} };
 
-    let counts = { positive: {}, negative: {}, neutral: {} };
-    let graphData = [
-      { id: 'neutral', data: [] },
-      { id: 'negative', data: [] },
-      { id: 'placeholder1', data: [] },
-      { id: 'placeholder2', data: [] },
-      { id: 'positive', data: [] }
-    ];
-
-    /*
-     * Populate message sentiment counts at the appropriate times.
-     */
+    // Populate message sentiment counts at the appropriate times.
     for (const msg of messages) {
+      const msgSentiment = msg['sentiment'];
       const msgDate = new Date(msg['time_stamp']);
-      const time = Math.floor(
-        getTimeBetween(dateTime, msgDate, getUnits(timeFrame))
-      );
-      const sentiment = msg['sentiment'];
+      const units = getUnits(timeFrame);
+      const time = Math.floor(getTimeBetween(dateTime, msgDate, units));
+      let counts = sentimentCounts[msgSentiment];
 
-      counts[sentiment][time] = (counts[sentiment][time] || 0) + 1;
+      counts[time] = (counts[time] || 0) + 1;
     }
 
-    /*
-     * Make sure there is a count for each sentiment type at each interval.
-     */
+    // Make sure there is a count for each sentiment type at each interval.
     const range = getMaximumXValue(timeFrame);
     for (let i = 0; i <= range; i++) {
-      for (const sentiment in counts) {
-        counts[sentiment][i] = counts[sentiment][i] || 0;
+      for (const sentiment in sentimentCounts) {
+        sentimentCounts[sentiment][i] = sentimentCounts[sentiment][i] || 0;
       }
     }
 
-    /*
-     * Populate the graph data with the message sentiment counts.
-     */
-    for (const sentiment in counts) {
-      const i = sentiment == 'positive' ? 4 : sentiment == 'negative' ? 1 : 0;
-
-      for (const time in counts[sentiment]) {
-        graphData[i]['data'].push({
-          'x': time,
-          'y': counts[sentiment][time]
-        });
+    return Object.entries(sentimentCounts).map(([sentiment, counts]) => {
+      return {
+        id: sentiment,
+        color: getSentimentColor(sentiment),
+        data: getCountsData(counts).sort((a, b) => a['x'] - b['x'])
       }
-
-      graphData[i]['data'].sort((a, b) => a['x'] - b['x']);
-    }
-
-    return graphData;
+    });
   }
 
   return (
     <div className='SentimentGraph'>
-      <div className='Options'>
-        <div className='DateTime'>
-          <DateTimePicker
-            onChange={setDateTime}
-            value={dateTime}
-            minDate={new Date(currentDate.getTime() - 31 * msInDay)}
-            maxDate={currentDate}
-            disableClock={true}
-            className='DateTimePicker'
-            clearIcon={null}
-          />
-        </div>
-        <div className='Retrieve'>
-          <button onClick={() => retrieveMessages(dateTime)}>
-            Retrieve Messages
-          </button>
-        </div>
-        <div className='TimeFrame'>
-          <button onClick={() => setTimeFrame('Hour')}>
-            View Hour
-          </button>
-        </div>
-        <div className='TimeFrame'>
-          <button onClick={() => setTimeFrame('Day')}>
-            View Day
-          </button>
-        </div>
-        <div className='TimeFrame'>
-          <button onClick={() => setTimeFrame('Week')}>
-            View Week
-          </button>
-        </div>
-      </div>
-      <div className='Stats'>
-        <div className='TotalMessages'>
-          <span>Total Messages</span>
-          <span>{totalMessages}</span>
-        </div>
-        <div className='PositiveMessages'>
-          <span>Positive Messages</span>
-          <span>{positiveMessages}</span>
-        </div>
-        <div className='NegativeMessages'>
-          <span>Negative Messages</span>
-          <span>{negativeMessages}</span>
-        </div>
-        <div className='NeutralMessages'>
-          <span>Neutral Messages</span>
-          <span>{neutralMessages}</span>
-        </div>
-        <div className='NetMessageSentiment'>
-          <span>Net Message Sentiment</span>
-          <span>{netMessageSentiment}</span>
-        </div>
-      </div>
-      <div className='Graph'>
+      <SentimentGraphOptions
+        Hour={Hour}
+        Day={Day}
+        Week={Week}
+        setDateTime={setDateTime}
+        setTimeFrame={setTimeFrame}
+        getMessages={getMessages}
+      />
+      <SentimentGraphStats
+        data={graphData}
+      />
+      <div className='SentimentGraphBody'>
         <Legend />
         <StackedLineGraph
-          data={getGraphData(messages, timeFrame, dateTime)}
+          data={graphData}
           maximumXValue={getMaximumXValue(timeFrame)}
         />
       </div>

@@ -1,0 +1,16 @@
+.SentimentGraphStats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #212126;
+  outline: 1px solid black;
+}
+
+.SentimentGraphStats div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  flex-basis: 100%;
+  outline: 1px solid black;
+}

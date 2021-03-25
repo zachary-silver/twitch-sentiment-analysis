@@ -36,7 +36,7 @@ const theme = {
 const Graph = (data, maximumXValue) => (
   <ResponsiveLine
     data={data}
-    margin={{ top: 20, right: 80, bottom: 80, left: 80 }}
+    margin={{ top: 40, right: 80, bottom: 80, left: 90 }}
     xScale={{
       type: 'linear',
       min: 0,
@@ -49,7 +49,7 @@ const Graph = (data, maximumXValue) => (
       stacked: false,
       reverse: false
     }}
-    curve="linear"
+    curve='monotoneX'
     axisTop={null}
     axisRight={null}
     axisBottom={{
@@ -67,7 +67,7 @@ const Graph = (data, maximumXValue) => (
       tickPadding: 5,
       tickRotation: 0,
       legend: 'Messages',
-      legendOffset: -60,
+      legendOffset: -70,
       legendPosition: 'middle'
     }}
     pointSize={10}
@@ -76,9 +76,10 @@ const Graph = (data, maximumXValue) => (
     pointBorderColor={{ from: 'serieColor' }}
     pointLabelYOffset={-12}
     enableArea={true}
-    areaOpacity={0.5}
+    areaOpacity={0.4}
     useMesh={true}
     theme={theme}
+    colors={{ datum: 'color' }}
   />
 );
 

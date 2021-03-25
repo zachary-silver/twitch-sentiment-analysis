@@ -4,26 +4,26 @@
 }
 
 div.Header div {
-  min-width: 33vw;
-  max-width: 33vw;
   display: flex;
-}
-
-div.ImageDiv img {
-  max-height: 60%;
-  position: relative;
-  left: 2%;
-  top: 20%;
+  flex-basis: 100%;
 }
 
 div.ImageDiv a {
   display: flex;
   justify-content: left;
-  width: 100%;
+  align-items: center;
+  width: 50px;
+}
+
+div.ImageDiv img {
+  max-height: 60%;
+  position: relative;
+  left: 10px;
 }
 
 div.LoginDiv {
   justify-content: right;
+  align-items: center;
 }
 
 div.UserDiv {
@@ -35,4 +35,10 @@ div.UserDiv p {
   justify-content: center;
   margin: auto;
   color: white;
+}
+
+.Login {
+  position: relative;
+  right: 10px;
+  height: 80%;
 }

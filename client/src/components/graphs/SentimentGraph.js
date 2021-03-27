@@ -3,7 +3,7 @@ import './SentimentGraph.css'
 import SentimentGraphOptions from './SentimentGraphOptions'
 import SentimentGraphStats from './SentimentGraphStats'
 import StackedLineGraph from '../graphs/StackedLineGraph'
-import Legend from '../Legend'
+import Legend from './Legend'
 import DateTimePicker from 'react-datetime-picker'
 import './DateTimePicker.css'
 
@@ -19,39 +19,21 @@ function SentimentGraph(props) {
   const [messages, setMessages] = useState([]);
   const [dateTime, setDateTime] = useState(null);
   const [timeFrame, setTimeFrame] = useState(Hour);
+  const [loading, setLoading] = useState(false);
 
   const graphData = getGraphData(messages, timeFrame, dateTime);
 
   async function getMessages(dateTime) {
-    const minDate = dateTime;
-    const maxDate = new Date(minDate.getTime() + 7 * msInDay + msInDay);
-    setMessages(getRandomMessages(minDate, maxDate));
-  }
+    if (dateTime) {
+      setLoading(true);
+      const minDate = dateTime.getTime();
+      const maxDate = new Date(minDate + 7 * msInDay + msInDay).getTime();
+      const url = `http://localhost:3000/twitch/messages/${minDate}-${maxDate}`;
 
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
-
-  function getRandomDate(start, end) {
-    return new Date(
-      start.getTime() + Math.random() * (end.getTime() - start.getTime())
-    );
-  }
-
-  function getRandomMessages(minDate, maxDate) {
-    const sentiments = ['positive', 'negative', 'neutral'];
-    let messages = [];
-
-    for (let i = 0; i < 1000; i++) {
-      const sentiment = getRandomInt(3);
-      const date = getRandomDate(minDate, maxDate);
-      messages.push({
-        'sentiment': sentiments[sentiment],
-        'time_stamp': date
-      });
+      fetch(url, { credentials: 'include' })
+        .then(response => response.json())
+        .then(result => setMessages(result.messages) || setLoading(false));
     }
-
-    return messages;
   }
 
   function getTimeBetween(a, b, units) {
@@ -143,11 +125,10 @@ function SentimentGraph(props) {
       counts[time] = (counts[time] || 0) + 1;
     }
 
-    // Make sure there is a count for each sentiment type at each interval.
-    const range = getMaximumXValue(timeFrame);
-    for (let i = 0; i <= range; i++) {
-      for (const sentiment in sentimentCounts) {
-        sentimentCounts[sentiment][i] = sentimentCounts[sentiment][i] || 0;
+    // Make sure there is a count at each interval.
+    for (let time = 0; time <= getMaximumXValue(timeFrame); time++) {
+      for (const counts of Object.values(sentimentCounts)) {
+        counts[time] = counts[time] || 0;
       }
     }
 
@@ -169,6 +150,7 @@ function SentimentGraph(props) {
         setDateTime={setDateTime}
         setTimeFrame={setTimeFrame}
         getMessages={getMessages}
+        loading={loading}
       />
       <SentimentGraphStats
         data={graphData}

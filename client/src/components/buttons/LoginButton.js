@@ -21,16 +21,16 @@ function LoginButton(props) {
   }
 
   function logout() {
-    fetch('http://localhost:3000/twitch/logout')
+    fetch('http://localhost:3000/twitch/logout', { credentials: 'include' })
       .then(response => response.json())
       .then(result => props.updateSession(result))
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }
 
   return (
     <Button className="Login"
-      onClick={props.session.active ? logout : login}>
-      {props.session.active ? 'Logout' : 'Login'}
+      onClick={props.session.id ? logout : login}>
+      {props.session.id ? 'Logout' : 'Login'}
     </Button>
   );
 }

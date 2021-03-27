@@ -15,7 +15,10 @@ app.use(session({
 app.use(express.static('public'));
 app.use(twitchRoute.passport.initialize());
 app.use(twitchRoute.passport.session());
-app.use(cors());
+app.use(cors({
+  origin: (origin, callback) => callback(null, [origin]),
+  credentials: true
+}));
 
 app.use('/', indexRoute.router);
 app.use('/twitch', twitchRoute.router);

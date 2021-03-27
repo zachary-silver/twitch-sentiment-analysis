@@ -1,50 +1,85 @@
 const tmi    = require('tmi.js');
 const fs     = require('fs');
 const config = require('./config.js');
+const db     = require('./database/index');
 
-const opts = {
-  identity: {
-    username: 'tcsa-bot',
-    password: config.TWITCH_IRC_TOKEN
-  },
-  channels: [
-    'summit1g',
-    'hirona',
-    'moonmoon'
-  ]
-};
+const msInMinute = 60 * 1000;
 
 let messages = [];
 
-const client = new tmi.client(opts);
+let client = getIRCClient();
 
-client.on('message', onMessageHandler);
-client.on('connected', onConnectedHandler);
+db.mongoose
+  .connect(db.url, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log(`Connected to ${db.url}`);
+  })
+  .catch(err => {
+    console.error(`Failed to connect to ${db.url}`, err);
+    process.exit();
+  });
 
-client.connect();
+setTimeout(updateIRC, msInMinute * 10);
 
-function onMessageHandler(target, context, msg, self) {
-  if (self) { return; } // Ignore own messages
+async function updateIRC() {
+  (await client).disconnect().catch(console.error);
 
-  const message = {
-    channel: target,
-    user_id: context['user-id'],
-    display_name: context['display-name'],
-    time_stamp: Date.now(),
-    content: msg.trim()
+  client = getIRCClient();
+
+  setTimeout(updateIRC, msInMinute * 10);
+}
+
+async function getIRCOptions() {
+  let channels = await db.models.UserModel.find()
+
+  channels = channels.map(user => user['display_name'].toLowerCase());
+
+  const options = {
+    identity: {
+      username: 'tcsa-bot',
+      password: config.TWITCH_IRC_TOKEN
+    },
+    channels: channels
   };
 
-  messages.push(message);
+  console.log(options.channels);
+
+  return options;
+}
+
+async function getIRCClient() {
+  const client = new tmi.client(await getIRCOptions());
+
+  client.on('message', handleMessage);
+  client.on('connected', handleConnected);
+
+  client.connect().catch(console.error);
+
+  return client;
+}
+
+function handleMessage(target, context, msg, self) {
+  if (self) { return; } // Ignore own messages
+
+  messages.push({
+    time_stamp: Date.now(),
+    channel: target,
+    content: msg.trim()
+  });
 
   if (messages.length > 1000) {
-    fs.appendFile('chatlog.txt',
-      JSON.stringify(messages, null, 2) + ',\n',
-      (err) => { if (err) console.log(err); });
+    console.log('Writing to db...');
+
+    db.models.MessageModel.insertMany(messages, (err, result) => {
+      if (err) {
+        console.error(err);
+      }
+    });
 
     messages = [];
   }
 }
 
-function onConnectedHandler(addr, port) {
+function handleConnected(addr, port) {
   console.log(`Connected to ${addr}:${port}`);
 }

@@ -39,7 +39,7 @@ function SentimentGraphOptions(props) {
       </div>
       <div className='Retrieve'>
         <button onClick={() => handleRetrieve(dateTime)}>
-          Retrieve Messages
+          {props.loading ? 'Retrieving...' : 'Retrieve Messages'}
         </button>
       </div>
       <div className='TimeFrame'>

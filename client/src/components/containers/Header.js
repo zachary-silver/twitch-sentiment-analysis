@@ -12,7 +12,7 @@ function Header(props) {
         </a>
       </div>
       <div className="UserDiv">
-        <p>{props.session.active?.display_name}</p>
+        <p>{props.session.display_name}</p>
       </div>
       <div className="LoginDiv">
         <LoginButton

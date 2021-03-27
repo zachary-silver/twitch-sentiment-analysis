@@ -10,10 +10,10 @@ function App() {
   useEffect(fetchSession, []);
 
   function fetchSession() {
-    fetch('http://localhost:3000/twitch/user')
+    fetch('http://localhost:3000/twitch/user', { credentials: 'include' })
       .then(response => response.json())
       .then(result => setSession(result))
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }
 
   return (

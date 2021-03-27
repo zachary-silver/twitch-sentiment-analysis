@@ -70,6 +70,7 @@ const Graph = (data, maximumXValue) => (
       legendOffset: -70,
       legendPosition: 'middle'
     }}
+    enablePoints={false}
     pointSize={10}
     pointColor={{ theme: 'background' }}
     pointBorderWidth={2}
@@ -77,7 +78,7 @@ const Graph = (data, maximumXValue) => (
     pointLabelYOffset={-12}
     enableArea={true}
     areaOpacity={0.4}
-    useMesh={true}
+    useMesh={false}
     theme={theme}
     colors={{ datum: 'color' }}
   />

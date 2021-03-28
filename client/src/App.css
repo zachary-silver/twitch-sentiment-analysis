@@ -1,3 +1,14 @@
 .App {
   text-align: center;
 }
+
+.Header, .Footer {
+  height: 5vh;
+  background: #212126;
+  outline: 2px solid black;
+}
+
+.Body {
+  height: 90vh;
+  background: #18181c;
+}

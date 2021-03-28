@@ -6,15 +6,17 @@ import logo from '../../twitch_icon.png';
 function Header(props) {
   return (
     <div className="Header">
-      <div className="ImageDiv">
+      <div className="Image">
         <a href="https://www.twitch.tv/">
           <img src={logo} alt="twitch_icon"/>
         </a>
       </div>
-      <div className="UserDiv">
-        <p>{props.session.display_name}</p>
+      <div className="User">
+        <a href={`https://www.twitch.tv/${props.session.display_name}`}>
+          {props.session.display_name}
+        </a>
       </div>
-      <div className="LoginDiv">
+      <div className="Login">
         <LoginButton
           session={props.session}
           updateSession={props.updateSession}/>

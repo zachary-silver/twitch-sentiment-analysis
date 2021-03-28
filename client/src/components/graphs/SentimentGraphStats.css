@@ -7,10 +7,10 @@
 }
 
 .SentimentGraphStats div {
+  height: 100%;
   display: flex;
+  flex-basis: 100%;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
-  flex-basis: 100%;
   outline: 1px solid black;
 }

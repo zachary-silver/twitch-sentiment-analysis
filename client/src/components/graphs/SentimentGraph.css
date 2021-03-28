@@ -9,6 +9,12 @@
   color: white;
 }
 
+.SentimentGraph button:hover {
+  color: #8a3bff;
+  cursor: pointer;
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.05);
+}
+
 .SentimentGraphOptions {
   height: 6%;
   width: 100%;
@@ -42,12 +48,6 @@
   color: white;
   background: transparent;
   outline: 1px solid black;
-}
-
-.SentimentGraph button:hover {
-  color: #8a3bff;
-  cursor: pointer;
-  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.05);
 }
 
 .Legend {

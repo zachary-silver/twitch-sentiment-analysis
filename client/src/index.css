@@ -11,17 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.Header, .Footer {
-  background: #212126;
-}
-
-.Header, .Footer {
-  height: 5vh;
-  outline: 2px solid black;
-}
-
-.Body {
-  height: 90vh;
-  background: #18181c;
-}

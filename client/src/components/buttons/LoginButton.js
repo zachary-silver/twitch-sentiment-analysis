@@ -28,7 +28,7 @@ function LoginButton(props) {
   }
 
   return (
-    <Button className="Login"
+    <Button className='LoginButton'
       onClick={props.session.id ? logout : login}>
       {props.session.id ? 'Logout' : 'Login'}
     </Button>

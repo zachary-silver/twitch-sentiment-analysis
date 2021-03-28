@@ -1,43 +1,43 @@
 .Header {
   display: flex;
-  justify-content: space-between;
 }
 
-div.Header div {
+.Header div {
   display: flex;
   flex-basis: 100%;
 }
 
-div.ImageDiv a {
+.Image a {
   display: flex;
   justify-content: left;
   align-items: center;
   width: 50px;
 }
 
-div.ImageDiv img {
+.Image img {
   max-height: 60%;
   position: relative;
   left: 10px;
 }
 
-div.LoginDiv {
-  justify-content: right;
-  align-items: center;
-}
-
-div.UserDiv {
+.User {
   justify-content: center;
 }
 
-div.UserDiv p {
+.User a {
   display: flex;
-  justify-content: center;
-  margin: auto;
+  align-items: center;
+  text-decoration: none;
   color: white;
 }
 
 .Login {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.LoginButton {
   position: relative;
   right: 10px;
   height: 80%;

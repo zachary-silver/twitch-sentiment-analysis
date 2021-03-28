@@ -15,19 +15,13 @@ const msInWeek = msInDay * 7;
 const Hour = 'Hour';
 const Day = 'Day';
 const Week = 'Week';
-const csvData = [
-  ["firstname", "lastname", "email"],
-  ["Ahmed", "Tomi", "ah@smthing.co.com"],
-  ["Raed", "Labes", "rl@smthing.co.com"],
-  ["Yezzi", "Min l3b", "ymin@cocococo.com"]
-];
 
 function SentimentGraph(props) {
   const [messages, setMessages] = useState([]);
   const [dateTime, setDateTime] = useState(null);
   const [timeFrame, setTimeFrame] = useState(Hour);
+  const [minDate, setMinDate] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [minDate, setMinDate] = useState(new Date());
 
   const graphData = getGraphData(messages, timeFrame, dateTime);
 
@@ -36,8 +30,9 @@ function SentimentGraph(props) {
   async function getMessages(dateTime) {
     if (dateTime) {
       setLoading(true);
+
       const minDate = dateTime.getTime();
-      const maxDate = new Date(minDate + 7 * msInDay + msInDay).getTime();
+      const maxDate = new Date(minDate + 8 * msInDay).getTime();
       const url = `http://localhost:3000/twitch/messages/${minDate}-${maxDate}`;
 
       fetch(url, { credentials: 'include' })
@@ -52,9 +47,8 @@ function SentimentGraph(props) {
     fetch(url, { credentials: 'include' })
       .then(response => response.json())
       .then(result => {
-        if (result.message['time_stamp']) {
-          setMinDate(new Date(result.message['time_stamp']))
-        }
+        const ts = result.message['time_stamp'];
+        ts ? setMinDate(new Date(ts)) : setMinDate(new Date());
       });
   }
 
@@ -211,7 +205,7 @@ function SentimentGraph(props) {
         <CSVLink data={getExportData(graphData)} id='csvDataExport' hidden />
         <button
           type='submit'
-          onClick={() => { document.getElementById('csvDataExport').click() }}>
+          onClick={() => document.getElementById('csvDataExport').click()}>
           Export Data
         </button>
       </div>

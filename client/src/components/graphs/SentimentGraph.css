@@ -20,12 +20,34 @@
 }
 
 .SentimentGraphBody {
-  height: 84%;
+  height: 78%;
   width: 100%;
   display: flex;
   flex-direction: column;
   background: #212126;
   outline: 1px solid black;
+}
+
+.SentimentGraphFooter {
+  height: 6%;
+  width: 100%;
+  background: #212126;
+  outline: 1px solid black;
+}
+
+.SentimentGraphFooter button {
+  height: 100%;
+  width: 100%;
+  border: none;
+  color: white;
+  background: transparent;
+  outline: 1px solid black;
+}
+
+.SentimentGraph button:hover {
+  color: #8a3bff;
+  cursor: pointer;
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.05);
 }
 
 .Legend {

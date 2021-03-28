@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './SentimentGraph.css'
 import SentimentGraphOptions from './SentimentGraphOptions'
 import SentimentGraphStats from './SentimentGraphStats'
@@ -6,6 +6,7 @@ import StackedLineGraph from '../graphs/StackedLineGraph'
 import Legend from './Legend'
 import DateTimePicker from 'react-datetime-picker'
 import './DateTimePicker.css'
+import { CSVLink, CSVDownload } from "react-csv"
 
 const msInMinute = 60 * 1000;
 const msInHour = msInMinute * 60;
@@ -14,14 +15,23 @@ const msInWeek = msInDay * 7;
 const Hour = 'Hour';
 const Day = 'Day';
 const Week = 'Week';
+const csvData = [
+  ["firstname", "lastname", "email"],
+  ["Ahmed", "Tomi", "ah@smthing.co.com"],
+  ["Raed", "Labes", "rl@smthing.co.com"],
+  ["Yezzi", "Min l3b", "ymin@cocococo.com"]
+];
 
 function SentimentGraph(props) {
   const [messages, setMessages] = useState([]);
   const [dateTime, setDateTime] = useState(null);
   const [timeFrame, setTimeFrame] = useState(Hour);
   const [loading, setLoading] = useState(false);
+  const [minDate, setMinDate] = useState(new Date());
 
   const graphData = getGraphData(messages, timeFrame, dateTime);
+
+  useEffect(getMinDate, []);
 
   async function getMessages(dateTime) {
     if (dateTime) {
@@ -34,6 +44,18 @@ function SentimentGraph(props) {
         .then(response => response.json())
         .then(result => setMessages(result.messages) || setLoading(false));
     }
+  }
+
+  function getMinDate() {
+    const url = 'http://localhost:3000/twitch/messages/oldest';
+
+    fetch(url, { credentials: 'include' })
+      .then(response => response.json())
+      .then(result => {
+        if (result.message['time_stamp']) {
+          setMinDate(new Date(result.message['time_stamp']))
+        }
+      });
   }
 
   function getTimeBetween(a, b, units) {
@@ -141,6 +163,28 @@ function SentimentGraph(props) {
     });
   }
 
+  function getExportData(graphData, queryDate) {
+    if (graphData.length == 0) { return [] }
+
+    let exportData = [['']];
+
+    graphData[0].data.forEach(dataPoint => {
+      const date = new Date(
+        dateTime.getTime() + dataPoint['x'] * getUnits(timeFrame)
+      );
+      const str = `${date.getDate()}/${date.getMonth() + 1}`
+        + `/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+
+      exportData[0].push(str);
+    });
+
+    graphData.forEach(data => {
+      exportData.push([data.id, ...data.data.map(dataPoint => dataPoint['y'])]);
+    });
+
+    return exportData;
+  }
+
   return (
     <div className='SentimentGraph'>
       <SentimentGraphOptions
@@ -151,6 +195,7 @@ function SentimentGraph(props) {
         setTimeFrame={setTimeFrame}
         getMessages={getMessages}
         loading={loading}
+        minDate={minDate}
       />
       <SentimentGraphStats
         data={graphData}
@@ -161,6 +206,14 @@ function SentimentGraph(props) {
           data={graphData}
           maximumXValue={getMaximumXValue(timeFrame)}
         />
+      </div>
+      <div className='SentimentGraphFooter'>
+        <CSVLink data={getExportData(graphData)} id='csvDataExport' hidden />
+        <button
+          type='submit'
+          onClick={() => { document.getElementById('csvDataExport').click() }}>
+          Export Data
+        </button>
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ function LoginButton(props) {
   function logout() {
     fetch('http://localhost:3000/twitch/logout', { credentials: 'include' })
       .then(response => response.json())
-      .then(result => props.updateSession(result))
+      .then(result => { window.location = 'http://localhost:5000/'; })
       .catch(err => console.error(err));
   }
 

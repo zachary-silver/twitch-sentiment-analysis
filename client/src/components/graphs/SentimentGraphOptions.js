@@ -26,14 +26,13 @@ function SentimentGraphOptions(props) {
   return (
     <div className='SentimentGraphOptions'>
       <div className='DateTime'>
-        <DateTimePicker
+        <DateTimePicker className='DateTimePicker'
           onChange={handleDateTime}
           value={dateTime}
-          minDate={new Date(currentDate.getTime() - 31 * msInDay)}
+          minDate={props.minDate}
           maxDate={currentDate}
           disableClock={true}
           clearIcon={null}
-          className='DateTimePicker'
           format='MM/dd/y hh:mm a'
         />
       </div>

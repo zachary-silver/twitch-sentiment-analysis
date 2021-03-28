@@ -117,7 +117,9 @@ router.get('/logout', (req, res) => {
 
     fetch(url, options)
       .then(innerRes => {
-        innerRes.status == 200 ? clearSession(req, res) : handleError(innerRes.statusText);
+        innerRes.status == 200
+          ? clearSession(req, res)
+          : handleError(innerRes.statusText);
       })
       .catch(handleError);
   } else {
@@ -139,6 +141,35 @@ router.get('/users', (req, res) => {
         res.send({ users: [] });
       }
     });
+});
+
+router.get('/messages/oldest', (req, res) => {
+  const user = req.session?.passport?.user;
+
+  if (user) {
+    // db.models.MessagesModel.aggregate([
+    //   {
+    //     $group: {
+    //       _id: {},
+    //       oldest: { $min: "$time_stamp" }
+    //     }
+    //   }
+    // ]);
+
+    db.models.MessageModel
+      .findOne({
+        // channel: `#${user['display_name']}`,
+      })
+      .exec((err, result) => {
+        if (!err) {
+          res.send({ message: result });
+        } else {
+          res.send({ message: {} });
+        }
+      });
+  } else {
+    res.send({ message: {} });
+  }
 });
 
 router.get('/messages/:from-:to', (req, res) => {

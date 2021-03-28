@@ -1,12 +1,11 @@
 const tmi    = require('tmi.js');
-const fs     = require('fs');
 const config = require('./config.js');
 const db     = require('./database/index');
 
 const msInMinute = 60 * 1000;
+const bufferSize = 1000;
 
 let messages = [];
-
 let client = getIRCClient();
 
 db.mongoose
@@ -19,20 +18,19 @@ db.mongoose
     process.exit();
   });
 
-setTimeout(updateIRC, msInMinute * 10);
+setTimeout(updateIRCClient, msInMinute * 10);
 
-async function updateIRC() {
+async function updateIRCClient() {
   (await client).disconnect().catch(console.error);
 
   client = getIRCClient();
 
-  setTimeout(updateIRC, msInMinute * 10);
+  setTimeout(updateIRCClient, msInMinute * 10);
 }
 
 async function getIRCOptions() {
-  let channels = await db.models.UserModel.find()
-
-  channels = channels.map(user => user['display_name'].toLowerCase());
+  const channels = (await db.models.UserModel.find())
+    .map(user => user['display_name'].toLowerCase());
 
   const options = {
     identity: {
@@ -41,8 +39,6 @@ async function getIRCOptions() {
     },
     channels: channels
   };
-
-  console.log(options.channels);
 
   return options;
 }
@@ -67,13 +63,9 @@ function handleMessage(target, context, msg, self) {
     content: msg.trim()
   });
 
-  if (messages.length > 1000) {
-    console.log('Writing to db...');
-
+  if (messages.length > bufferSize) {
     db.models.MessageModel.insertMany(messages, (err, result) => {
-      if (err) {
-        console.error(err);
-      }
+      if (err) { console.error(err) }
     });
 
     messages = [];

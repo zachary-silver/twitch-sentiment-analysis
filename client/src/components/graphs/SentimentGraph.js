@@ -32,7 +32,7 @@ function SentimentGraph(props) {
       setLoading(true);
 
       const minDate = dateTime.getTime();
-      const maxDate = new Date(minDate + 8 * msInDay).getTime();
+      const maxDate = new Date(minDate + 1 * msInDay).getTime();
       const url = `http://localhost:3000/twitch/messages/${minDate}-${maxDate}`;
 
       fetch(url, { credentials: 'include' })
@@ -202,7 +202,12 @@ function SentimentGraph(props) {
         />
       </div>
       <div className='SentimentGraphFooter'>
-        <CSVLink data={getExportData(graphData)} id='csvDataExport' hidden />
+        <CSVLink
+          data={getExportData(graphData)}
+          filename={'sentiment-data.csv'}
+          id='csvDataExport'
+          hidden
+        />
         <button
           type='submit'
           onClick={() => document.getElementById('csvDataExport').click()}>

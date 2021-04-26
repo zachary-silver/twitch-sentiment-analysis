@@ -28,25 +28,25 @@ def load_model(name):
 
 
 def get_mlp_model(messages, sentiments):
-    clf = MLPClassifier(
+    mlp_classifier = MLPClassifier(
             solver='adam',
             hidden_layer_sizes=(150, 100, 50),
             max_iter=ITERATIONS,
             random_state=1
             )
-    clf.fit(messages, sentiments)
+    mlp_classifier.fit(messages, sentiments)
 
-    return clf
+    return mlp_classifier
 
 
 def get_rf_model(messages, sentiments):
-    text_classifier = RandomForestClassifier(
+    rf_classifier = RandomForestClassifier(
             n_estimators=200,
             random_state=RANDOM_STATE
             )
-    text_classifier.fit(messages, sentiments)
+    rf_classifier.fit(messages, sentiments)
 
-    return text_classifier
+    return rf_classifier
 
 
 def get_tfidf_vectors(messages):
@@ -111,7 +111,8 @@ def main():
 
     # model = get_rf_model(x_train, y_train)
     # model = get_mlp_model(x_train, y_train)
-    model = load_model('mlp_50_iterations')
+    # model = load_model('mlp_50_iterations')
+    model = load_model('random_forest')
     # save_model(model, 'mlp_50_iterations')
     predictions = model.predict(x_test)
 

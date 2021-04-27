@@ -32,10 +32,10 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-20T16:34:21.838Z,forsen,Barbie and the Magic of Pegasus,114999,False,False,I'M CUMMING BAJS MercyWing1 gachiF MercyWing2 . I'M CUMMING BAJS MercyWing1 gachiF MercyWing2
 0,2018-05-08T03:21:29.572Z,xqcow,IRL,89767,False,False,KKonaW
 1,2018-05-03T16:17:28.692Z,forsen,IRL,345828,False,True,gachiBASS
-0,2018-05-17T22:14:17.031Z,sodapoppin,Wizard of Legend,639262,False,False,shaman Pog
+1,2018-05-17T22:14:17.031Z,sodapoppin,Wizard of Legend,639262,False,False,shaman Pog
 1,2018-05-01T19:37:16.806Z,sodapoppin,unknown,798322,False,False,WOOOOOHHOOOO EEEHHHHOOOO
 0,2018-05-15T17:41:21.458Z,forsen,Animal Super Squad,535446,False,False,@PEWDIEPIEATTHEBRIDGE HYPERBRUH
-0,2018-05-24T22:10:20.094Z,sodapoppin,IRL,790699,False,False,Pog
+1,2018-05-24T22:10:20.094Z,sodapoppin,IRL,790699,False,False,Pog
 1,2018-05-12T04:53:03.085Z,moonmoon_ow,Throne of Lies: The Online Game of Deceit,9000,False,True,moon2N lovesMoonMoonsTHICCbutt gave Moon 400 bits. That's cool I guess moon2N
 -1,2018-05-23T18:55:09.794Z,forsen,Raft,219697,False,False,BRING BACK RACISM PepeHands
 1,2018-05-17T15:26:24.945Z,moonmoon_ow,Dark Souls III,376442,False,False,"Jesus christ always goes his own way, each and every way he goes is both right and correct @moonmoon_ow"
@@ -59,7 +59,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-31T19:11:00.864Z,forsen,Dark Souls,5973596,False,False,:)
 0,2018-05-06T20:10:37.875Z,forsen,Fallout: New Vegas,245373,False,True,forsen1 forsen2
 -1,2018-05-17T19:51:12.942Z,forsen,Wizard of Legend,1584677,False,True,MOVE CAM 😡 MOVE CAM 😡 MOVE CAM 😡 MOVE CAM 😡
--1,2018-05-06T20:33:22.227Z,forsen,Fallout: New Vegas,1444924,False,True,forsen1337 WTF NEW EMOTE Pog
+1,2018-05-06T20:33:22.227Z,forsen,Fallout: New Vegas,1444924,False,True,forsen1337 WTF NEW EMOTE Pog
 -1,2018-05-15T13:57:24.122Z,riotgames,League of Legends,2904897,False,False,i love azael lol
 1,2018-05-30T02:26:00.146Z,moonmoon_ow,Games + Demos,172710,False,True,LUL
 0,2018-05-04T13:00:06.056Z,riotgames,League of Legends,103094,False,False,CHEETAN GOD
@@ -222,14 +222,14 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-12T12:30:46.366Z,riotgames,League of Legends,2236531,False,False,LUL
 0,2018-05-27T16:19:01.567Z,forsen,IRL,24270,False,True,forsenBoys 🔭 forsen1 any bajs in chat? ⁭
 -1,2018-05-08T03:08:37.056Z,xqcow,Overwatch,3479475,False,False,ONE MAN SPAM WutFaceW
-0,2018-05-16T21:16:24.653Z,sodapoppin,Unleash,2228480,False,False,Pog
+1,2018-05-16T21:16:24.653Z,sodapoppin,Unleash,2228480,False,False,Pog
 1,2018-05-04T16:06:30.372Z,moonmoon_ow,Darkest Dungeon,7855,False,True,moon2M 👉 💩
 1,2018-05-11T14:39:16.529Z,riotgames,League of Legends,135749,False,False,MercyWing1 LUL MercyWing2
 1,2018-05-08T17:16:00.494Z,forsen,Barbie and the Magic of Pegasus,12817417,False,False,OMEGALUL
 0,2018-05-28T19:24:19.439Z,sodapoppin,Bless Online,2071717,False,True,For anyone stuck on the Bless loading screen: Please try reloading the game and being careful not to tab out until you have loaded fully into the game. This appears to solve the issue in most cases. Thank you for your patience while we work to fix the problem! 2
 0,2018-05-06T20:44:15.500Z,sodapoppin,IRL,2148275,False,True,HYPERBRUH PEWDIEPIE
 1,2018-05-02T03:48:01.954Z,moonmoon_ow,Darkest Dungeon,916329,False,True,naro2hu
-0,2018-05-22T18:33:35.232Z,forsen,Burnout Paradise,18485,False,False,Pog
+1,2018-05-22T18:33:35.232Z,forsen,Burnout Paradise,18485,False,False,Pog
 -1,2018-05-24T18:44:00.180Z,xqcow,Overwatch,14912,False,True,DansGame
 0,2018-05-12T22:00:42.806Z,forsen,Lake Ridden,885506,False,True,HYPERBRUH EUROVISION
 0,2018-05-13T05:37:08.536Z,moonmoon_ow,The Cat Lady,1554223,False,True,mon2L
@@ -277,7 +277,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 -1,2018-05-04T05:28:59.675Z,moonmoon_ow,Darkest Dungeon,37527,False,True,PepePls
 -1,2018-05-08T04:09:31.342Z,xqcow,IRL,981718,False,False,IGNORED LUL
 0,2018-05-27T05:28:48.799Z,moonmoon_ow,Dark Souls,2282385,False,True,REEEEEEE
-0,2018-05-14T17:38:10.048Z,forsen,Super Mario Odyssey,1228577,False,True,140IQ Pog
+1,2018-05-14T17:38:10.048Z,forsen,Super Mario Odyssey,1228577,False,True,140IQ Pog
 1,2018-05-04T04:07:35.236Z,moonmoon_ow,Darkest Dungeon,15,True,True,"moon2M 862 days until the next TOL stream, thanks for asking."
 0,2018-05-26T04:13:47.695Z,moonmoon_ow,Dark Souls,12609928,False,True,for being jewish? WOT?
 -1,2018-05-10T06:41:37.257Z,xqcow,IRL,430378,False,False,BibleThump
@@ -307,7 +307,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-09T15:39:07.809Z,sodapoppin,Inked,65157,False,False,Mount it gachiBASS
 -1,2018-05-08T21:01:51.835Z,forsen,Darwin Project,9000,False,True,"forsenE grooooooooove, Welcome back 4 months! forsenE"
 0,2018-05-31T18:18:31.075Z,forsen,Dark Souls,155069,False,False,Kappa
--1,2018-05-17T21:33:59.896Z,forsen,Wizard of Legend,606546,False,True,Pog WTF
+1,2018-05-17T21:33:59.896Z,forsen,Wizard of Legend,606546,False,True,Pog WTF
 -1,2018-05-29T06:16:03.225Z,moonmoon_ow,The Witcher 3: Wild Hunt,1658679,False,True,"what the fuck why does it say the witcher, did I get baited"
 1,2018-05-15T15:11:46.249Z,riotgames,League of Legends,875895,False,False,AUTIST TEST: forsenE FeelsGoodMan I'm clean FeelsGoodMan Clap .
 0,2018-05-23T17:55:00.937Z,forsen,Raft,563782,False,False,DuckerZ huh
@@ -343,11 +343,11 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-19T14:41:18.246Z,moonmoon_ow,Dark Souls III,1412849,False,False,That sword is so cheese
 -1,2018-05-03T19:40:21.904Z,forsen,Shoppe Keep 2,1086508,False,False,forsenCD PepeHands
 1,2018-05-03T05:24:33.531Z,sodapoppin,Ori and the Blind Forest,2532708,False,False,but you did LOOOOOOOL
-0,2018-05-03T04:45:38.144Z,sodapoppin,Ori and the Blind Forest,1901883,False,False,Pog
+1,2018-05-03T04:45:38.144Z,sodapoppin,Ori and the Blind Forest,1901883,False,False,Pog
 0,2018-05-05T18:25:22.803Z,forsen,Fallout: New Vegas,160644,False,False,gachiGASM DRAGON VISION ENGAGED gachiHYPER gachiGASM DRAGON VISION ENGAGED gachiHYPER g
 0,2018-05-30T16:06:55.223Z,forsen,Dark Souls,73505,False,False,LUL
 0,2018-05-15T10:51:17.815Z,riotgames,League of Legends,813051,False,False,LETS GO TL
-0,2018-05-03T19:07:42.563Z,forsen,Shoppe Keep 2,407514,False,True,BORDERLANDS 2 Pog
+1,2018-05-03T19:07:42.563Z,forsen,Shoppe Keep 2,407514,False,True,BORDERLANDS 2 Pog
 1,2018-05-14T18:35:55.993Z,forsen,Super Mario Odyssey,587509,False,True,:)
 0,2018-05-13T10:22:32.473Z,riotgames,League of Legends,2363804,False,False,MEEP POGGERS
 0,2018-05-04T00:16:26.048Z,xqcow,Overwatch,697837,False,False,░░░░█─────────────█──▀── ░░░░▓█───────▄▄▀▀█────── ░░░░▒░█────▄█▒░░▄░█───── ░░░░░░░▀▄─▄▀▒▀▀▀▄▄▀───── ░░░░░░░░░█▒░░░░▄▀─────── ▒▒▒░░░░▄▀▒░░░░▄▀──────── ▓▓▓▓▒░█▒░░░░░█▄───────── █████▀▒░░░░░█░▀▄──────── █████▒▒░░░▒█░░░▀▄─────── ███▓▓▒▒▒▀▀▀█▄░░░░█────── ▓██▓▒▒▒▒▒▒▒▒▒█░░░░█───── ▓▓█▓▒▒▒▒▒▒▓▒▒█░░░░░█──── ░▒▒▀▀▄▄▄▄█▄▄▀░░░░░░░█─
@@ -413,7 +413,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 -1,2018-05-23T05:12:53.177Z,moonmoon_ow,Super Ghouls 'N Ghosts,418073,False,True,Streamer bullied by twitch chat PepeHands
 1,2018-05-17T19:23:07.188Z,forsen,House Flipper,1437372,False,False,OMEGALUL
 1,2018-05-09T04:59:17.521Z,xqcow,Fortnite,295331,False,False,gachiBASS
-0,2018-05-05T15:45:50.291Z,forsen,Fallout: New Vegas,38642,False,True,"Pog CHECK MEME GALLERY Pog CHECK MEME GALLERY Pog CHECK MEME GALLERY Pog ,"
+1,2018-05-05T15:45:50.291Z,forsen,Fallout: New Vegas,38642,False,True,"Pog CHECK MEME GALLERY Pog CHECK MEME GALLERY Pog CHECK MEME GALLERY Pog ,"
 1,2018-05-23T06:45:23.369Z,xqcow,Until Dawn,153724,False,False,Champ
 -1,2018-05-02T16:20:49.477Z,forsen,Fallout: New Vegas,551288,False,False,IDIOTA PepeLaugh IDIOTA PepeLaugh IDIOTA PepeLaugh
 1,2018-05-22T03:10:34.412Z,moonmoon_ow,Super Ghouls 'N Ghosts,793955,False,True,CASUAL GAMER OMEGAROLL
@@ -428,7 +428,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-08T17:33:59.110Z,forsen,Barbie and the Magic of Pegasus,457727,False,False,:D
 1,2018-05-26T16:31:15.908Z,moonmoon_ow,Dark Souls,2225451,False,False,tppowerBulk Clap FeelsPointMan
 1,2018-05-06T05:06:43.641Z,moonmoon_ow,The Cat Lady,513288,False,True,pop filter OMEGAROLL
-0,2018-05-16T20:50:02.330Z,forsen,The Amazing Frog?,1333866,False,True,Pog
+1,2018-05-16T20:50:02.330Z,forsen,The Amazing Frog?,1333866,False,True,Pog
 1,2018-05-20T13:55:00.226Z,riotgames,League of Legends,1207208,False,False,UZI 80 CS UP POGGERS
 1,2018-05-03T16:50:20.425Z,forsen,IRL,76280,False,True,AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap
 1,2018-05-25T21:58:33.324Z,forsen,unknown,10212392,False,True,yourfriendlynoggin status: smol ppHop | Manly gachiBASS Clap | HONEYDETECTED 🍯 | NаM-er 🍇🍉🍋🍇 | homeless 4House
@@ -445,7 +445,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-21T15:36:05.209Z,moonmoon_ow,Dark Souls III,15,True,True,reaktanssi Try checking the playlist: https://docs.google.com/document/d/1Wgi4j7BYPzvNrBl6V2KYhb_lINxJ2riKH4ZXUwXLJPY/ Or google the song lyrics/chorus. [430]
 0,2018-05-23T03:51:33.312Z,moonmoon_ow,Super Ghouls 'N Ghosts,673929,False,False,Cave Story is the best SNES game
 -1,2018-05-08T02:08:59.884Z,moonmoon_ow,Dark Souls III,10294851,False,True,PepePls :(
-0,2018-05-12T00:56:33.081Z,sodapoppin,Beat Saber,644288,False,False,Pog
+1,2018-05-12T00:56:33.081Z,sodapoppin,Beat Saber,644288,False,False,Pog
 0,2018-05-09T04:46:17.860Z,moonmoon_ow,Conan Exiles,65954,False,True,PLEASE COPY PASTE THIS FOR YOUR MONTHLY PLEB TEST: ✓ amazW ✓ krippW ✓ trumpW ✓ btsLdW ✓ reynadW ✓ kolentoW ✓ bajW ✓ btsKotlW ✓ dewW ✓ emjaneW ✓ forsenW ✓ krippW ✓ mitchW ✓ singsingFcuk ✓ reckW ✓ sodaW ✓ btsGodzW ✓ merliniHappyMerlini ✓ taymooW ✓ rtzW ✓ admiralW ✓ envySwag ✓ sumailKappa ✓ btsMerliniW ✓ wtrWtR ✓ dagerDendi ✓ ppdSalt ✓ fearGASM ✓ singsingP ✓ fluffyW ✓ ratW ✓ Pleb test passed
 1,2018-05-19T22:03:14.766Z,sodapoppin,FAR: Lone Sails,507955,False,True,OLD MEMES LUL OLD MEMES LUL OLD MEMES LUL OLD MEMES LUL OLD MEMES LUL OLD MEMES LUL OLD MEMES LUL OLD MEMES LUL OLD MEMES LUL OLD MEMES LUL OLD MEMES LUL OLD MEMES LUL OLD MEMES LUL OLD MEMES LUL
 1,2018-05-04T23:58:43.474Z,sodapoppin,Donkey Kong 64,25244,False,True,tiny kong ppHop
@@ -506,7 +506,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-25T00:02:37.917Z,xqcow,Raft,9560683,False,False,POGGERS
 0,2018-05-04T21:48:31.495Z,sodapoppin,IRL,373778,False,True,forsenWTF
 -1,2018-05-13T02:46:48.971Z,moonmoon_ow,The Cat Lady,2969288,False,True,You need someone to get attached to before she is brutally murdered @MOONMOON_OW
-0,2018-05-25T17:32:34.583Z,sodapoppin,IRL,546079,False,False,Pog MUM
+1,2018-05-25T17:32:34.583Z,sodapoppin,IRL,546079,False,False,Pog MUM
 1,2018-05-12T20:44:10.896Z,forsen,Lake Ridden,3571,False,True,KappaPride forsenPls KappaPride forsenPls KappaPride forsenPls KappaPride forsenPls ⁭
 1,2018-05-19T21:26:15.343Z,riotgames,League of Legends,168164,False,False,I was trolling but also curious so thx for answers
 -1,2018-05-05T09:51:54.186Z,riotgames,League of Legends,78341,False,False,NA CHAT WutFace
@@ -613,7 +613,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 -1,2018-05-17T16:56:40.391Z,moonmoon_ow,Dark Souls III,226947,False,True,I WAS DANCING TO THAT DansGame
 1,2018-05-01T17:45:44.708Z,moonmoon_ow,Darkest Dungeon,195384,False,True,"FeelsGoodMan Aguaduck, you're really something special <3 onredH"
 1,2018-05-10T17:11:42.633Z,moonmoon_ow,Salt and Sanctuary,1160048,False,True,LUL
-0,2018-05-07T20:07:06.337Z,forsen,Elea,672573,False,True,Pog
+1,2018-05-07T20:07:06.337Z,forsen,Elea,672573,False,True,Pog
 -1,2018-05-22T21:38:39.985Z,sodapoppin,IRL,487175,False,False,DON'T SMASH IT sumSmash
 1,2018-05-23T21:17:58.200Z,forsen,Raft,768028,False,True,5/100 LEGENDARY QUEST ZULUL MAKE OTHERS ADD 1 AND PASTE IT IN CHAT UNTILL IT REACHES 100/100 ZULUL
 1,2018-05-09T20:55:34.821Z,sodapoppin,Deathgarden,1355350,False,False,SODAFRIENDS FeelsOkayMan 👉 <3 SODAFRIENDS FeelsOkayMan 👉 <3
@@ -657,12 +657,12 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-28T20:00:43.680Z,sodapoppin,Bless Online,413052,False,False,MALE gaciBASS MALE gaciBASS MALE gaciBASS MALE gaciBASS MALE gaciBASS MALE gaciBASS
 0,2018-05-31T21:52:47.595Z,forsen,Dark Souls,411873,False,True,UPGRADE SWORD
 -1,2018-05-05T17:48:15.648Z,forsen,Fallout: New Vegas,21560,False,True,@forsen FeelsWeirdMan
-0,2018-05-29T22:47:40.350Z,xqcow,Overwatch,1664770,False,False,Detroit was Pog
+1,2018-05-29T22:47:40.350Z,xqcow,Overwatch,1664770,False,False,Detroit was Pog
 1,2018-05-29T20:16:19.668Z,xqcow,Overwatch,1688782,False,False,phenomenal experience
 1,2018-05-26T21:08:22.487Z,forsen,Detroit: Become Human,25086,False,False,DARK SASI KKomrade DARK SASI KKomrade DARK SASI KKomrade .
 -1,2018-05-29T04:08:02.939Z,xqcow,Overwatch,6073673,False,False,Dragon ResidentSleeper
 0,2018-05-27T04:13:46.861Z,moonmoon_ow,Dark Souls,844194,False,True,moon2SMUG
-0,2018-05-26T17:36:46.687Z,forsen,Detroit: Become Human,9642282,False,False,Pog CHOICES ACTUALLY DO MATTER Pog
+1,2018-05-26T17:36:46.687Z,forsen,Detroit: Become Human,9642282,False,False,Pog CHOICES ACTUALLY DO MATTER Pog
 0,2018-05-15T16:25:35.610Z,riotgames,League of Legends,1035045,False,False,sound?!
 1,2018-05-04T02:31:10.063Z,moonmoon_ow,Darkest Dungeon,65954,False,True,TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap TriKool Clap
 0,2018-05-14T16:19:22.298Z,moonmoon_ow,Salt and Sanctuary,2126886,False,True,moon2N ok
@@ -680,7 +680,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 -1,2018-05-26T20:31:32.750Z,forsen,Detroit: Become Human,2291,False,True,monkaMEGA ⁭
 0,2018-05-14T17:33:36.414Z,forsen,Super Mario Odyssey,251175,False,True,HYPERBRUH
 0,2018-05-07T15:54:52.306Z,forsen,IRL,12121993,False,False,cold coffee in tropical shithole
-0,2018-05-20T11:57:56.791Z,riotgames,League of Legends,3908006,False,False,PogChamp
+1,2018-05-20T11:57:56.791Z,riotgames,League of Legends,3908006,False,False,PogChamp
 1,2018-05-28T23:46:11.381Z,sodapoppin,Bless Online,16321,False,True,i am :)
 1,2018-05-07T23:03:20.172Z,xqcow,Overwatch,3312,True,True,xqcLove IgnorantBoot is staying in the jungle! xqcLove Thanks so much for subbing xqcCat And supporting the stream! xqcCat
 -1,2018-05-28T19:12:53.660Z,sodapoppin,Bless Online,9517506,False,False,ANOTHER CRASH Pog
@@ -696,7 +696,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-13T14:29:26.201Z,riotgames,League of Legends,1748732,False,False,NA PogChamp
 -1,2018-05-30T17:51:27.734Z,forsen,Dark Souls,158275,False,False,@forsen Just admit you are too lazy
 1,2018-05-20T02:22:08.687Z,xqcow,Overwatch,3445120,False,False,EEKKO LUL
-0,2018-05-05T16:03:45.534Z,forsen,Fallout: New Vegas,1385149,False,True,Pog YES
+1,2018-05-05T16:03:45.534Z,forsen,Fallout: New Vegas,1385149,False,True,Pog YES
 1,2018-05-05T15:53:18.032Z,forsen,Fallout: New Vegas,4824610,False,True,WE ARE READY FOR CHAPTER 4 FeelsGoodMan Clap WE ARE READY FOR CHAPTER 4 FeelsGoodMan Clap
 0,2018-05-07T03:19:28.768Z,xqcow,Overwatch,951709,False,False,ResidentSleeper
 1,2018-05-23T18:40:57.975Z,forsen,Raft,1385149,False,False,Cx haHAA
@@ -743,7 +743,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-09T13:46:25.618Z,forsen,Radical Heights,736091,False,True,TriHard /
 0,2018-05-09T11:03:21.117Z,sodapoppin,For the King,294038,False,True,!uptime bot
 -1,2018-05-06T03:32:02.404Z,xqcow,Overwatch,30180,False,True,too real PepeHands
-0,2018-05-27T18:52:47.681Z,forsen,Dark Souls,12064705,False,True,USE it Pog
+1,2018-05-27T18:52:47.681Z,forsen,Dark Souls,12064705,False,True,USE it Pog
 0,2018-05-19T02:01:04.522Z,xqcow,Beat Saber,1869390,False,False,id hit it
 1,2018-05-05T05:57:21.397Z,moonmoon_ow,Darkest Dungeon,6570221,False,True,ppHop ᵐʸ ppHop ᵈʳᵉᵃᵐ ppHop ᶦˢ ppHop ᵃ ppHop ᶜʰᵃᵗ ppHop ᶠᵘˡˡ ppHop ᵒᶠ ppHop ˢᵐᵒˡ ppHop ˢᵖᵃᵐ ppHop ppHop ᵐʸ ppHop ᵈʳᵉᵃᵐ ppHop ᶦˢ ppHop ᵃ ppHop ᶜʰᵃᵗ ppHop ᶠᵘˡˡ ppHop ᵒᶠ ppHop ˢᵐᵒˡ ppHop ˢᵖᵃᵐ ppHop ppHop ᵐʸ ppHop ᵈʳᵉᵃᵐ ppHop ᶦˢ ppHop ᵃ ppHop ᶜʰᵃᵗ ppHop ᶠᵘˡˡ ppHop ᵒᶠ ppHop ˢᵐᵒˡ ppHop ˢᵖᵃᵐ ppHop
 1,2018-05-09T18:30:55.671Z,forsen,Darwin Project,64931,False,True,ZULUL
@@ -775,7 +775,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-14T15:53:59.592Z,moonmoon_ow,Salt and Sanctuary,41684,False,True,Clap2 moon2H
 0,2018-05-15T13:37:36.537Z,riotgames,League of Legends,526830,False,False,死爽了沒??
 -1,2018-05-11T15:07:29.889Z,riotgames,League of Legends,813215,False,False,wtf inhib low hp?
-0,2018-05-13T01:32:48.797Z,xqcow,Overwatch,130522,False,True,Pog
+1,2018-05-13T01:32:48.797Z,xqcow,Overwatch,130522,False,True,Pog
 1,2018-05-17T16:43:44.914Z,forsen,House Flipper,6955778,False,False,HYPERS
 0,2018-05-03T18:39:54.049Z,forsen,Shoppe Keep 2,1855,False,True,OMEGALUL
 0,2018-05-29T22:11:02.892Z,forsen,Dark Souls,459984,False,True,T OMEGALUL XIC STREAMER
@@ -787,7 +787,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-12T01:59:57.841Z,xqcow,Overwatch,2925423,False,False,gachiBASS Clap
 1,2018-05-19T00:33:07.161Z,sodapoppin,Wizard of Legend,2482287,False,False,OMEGALUL
 1,2018-05-23T06:09:53.836Z,moonmoon_ow,Throne of Lies: The Online Game of Deceit,137614,False,True,Clap2 moon2SMEG
-0,2018-05-12T21:41:09.366Z,forsen,Lake Ridden,24986,False,True,Pog
+1,2018-05-12T21:41:09.366Z,forsen,Lake Ridden,24986,False,True,Pog
 0,2018-05-04T15:11:57.701Z,moonmoon_ow,Darkest Dungeon,1116648,False,True,"We can start playing the game 8 mins into the stream, chat"
 1,2018-05-09T16:44:25.647Z,forsen,Radical Heights,495426,False,True,JUST BUILD 4HEad
 1,2018-05-08T11:19:45.729Z,riotgames,League of Legends,7704812,False,False,EVS 3 - 0 SUPport LUL
@@ -818,7 +818,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-13T19:27:14.032Z,forsen,Super Mario Odyssey,552749,False,True,free the plebs? FeelsOkayMan 👍 <3 ⁭
 1,2018-05-08T21:48:58.990Z,sodapoppin,IRL,1432469,False,False,Play LEAGUE 4Head
 1,2018-05-08T03:10:54.706Z,xqcow,IRL,9547975,False,True,LUL
-0,2018-05-30T15:58:29.404Z,forsen,Dark Souls,318172,False,False,A RUST TYPE GAME Pog A RUST TYPE GAME Pog
+1,2018-05-30T15:58:29.404Z,forsen,Dark Souls,318172,False,False,A RUST TYPE GAME Pog A RUST TYPE GAME Pog
 1,2018-05-26T04:46:15.937Z,moonmoon_ow,Dark Souls,685889,False,True,NICE JOB LUL
 1,2018-05-20T19:31:56.433Z,forsen,Barbie and the Magic of Pegasus,2447768,False,False,haHAA 👉 PepeLaugh haHAA 👉 PepeLaugh haHAA 👉 PepeLaugh haHAA 👉 PepeLaugh .
 1,2018-05-30T02:40:17.471Z,moonmoon_ow,Baldi's Basics in Education and Learning,588025,False,False,gachiBASS Clap I CAN HEAR THE SLAPS gachiBASS Clap I CAN HEAR THE SLAPS gachiBASS Clap I CAN HEAR THE SLAPS
@@ -855,7 +855,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-18T03:46:25.024Z,moonmoon_ow,Dark Souls III,1365991,False,False,Get really hard.
 0,2018-05-15T11:59:18.717Z,riotgames,League of Legends,12410310,False,False,ACHHHH
 1,2018-05-03T21:36:06.631Z,forsen,Shoppe Keep 2,187892,False,True,Jebaited
-0,2018-05-13T01:47:37.555Z,xqcow,Overwatch,48844,False,False,Pog
+1,2018-05-13T01:47:37.555Z,xqcow,Overwatch,48844,False,False,Pog
 1,2018-05-26T21:46:49.736Z,forsen,Detroit: Become Human,495426,False,True,DEVIENTS LEAKED HER EMAILS DonaldPls
 -1,2018-05-03T21:51:49.516Z,forsen,Shoppe Keep 2,114221,False,False,ANYWAYS PepeHands
 1,2018-05-27T04:38:17.462Z,xqcow,Detroit: Become Human,285480,False,False,hol up ☝
@@ -909,7 +909,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-15T20:49:55.862Z,forsen,Laser League,432890,False,True,LULW ⁭
 0,2018-05-26T17:57:08.230Z,forsen,Detroit: Become Human,188736,False,False,HYPERBRUH TF
 0,2018-05-25T17:03:59.016Z,forsen,Detroit: Become Human,228891,False,True,monkaOMEGA
-0,2018-05-15T16:47:56.460Z,forsen,IRL,122880,False,True,Pog
+1,2018-05-15T16:47:56.460Z,forsen,IRL,122880,False,True,Pog
 1,2018-05-02T21:27:43.541Z,sodapoppin,IRL,345025,False,True,LULW
 0,2018-05-17T02:33:31.810Z,sodapoppin,Wizard of Legend,3464313,False,True,@sodapoppin u mean occasionally every room? that thing better have some godlike cooldown Kappa
 1,2018-05-13T12:14:47.722Z,riotgames,League of Legends,82002,False,False,D 4Head C
@@ -971,7 +971,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-25T17:36:20.492Z,forsen,Detroit: Become Human,150610,False,True,forsenCD ANY DOCS ?
 1,2018-05-09T18:50:28.497Z,sodapoppin,IRL,816140,False,False,OMEGALUL CUCK OMEGALUL
 0,2018-05-09T00:58:18.692Z,sodapoppin,Wreckfest,299851,False,True,OMEGAROLL OMEGAROLL OMEGAROLL OMEGAROLL OMEGAROLL OMEGAROLL OMEGAROLL OMEGAROLL OMEGAROLL OMEGAROLL OMEGAROLL OMEGAROLL OMEGAROLL OMEGAROLL OMEGAROLL OMEGAROLL
--1,2018-05-29T23:19:37.631Z,sodapoppin,Warcraft III: The Frozen Throne,1183830,False,True,Pog UTHER Pog KILL ARTHAS Pog SAVE LORDAERON Pog
+1,2018-05-29T23:19:37.631Z,sodapoppin,Warcraft III: The Frozen Throne,1183830,False,True,Pog UTHER Pog KILL ARTHAS Pog SAVE LORDAERON Pog
 1,2018-05-20T14:00:31.627Z,riotgames,League of Legends,8049123,False,False,MercyWing1 PopCorn MercyWing2
 0,2018-05-30T06:01:35.465Z,moonmoon_ow,Baldi's Basics in Education and Learning,135427,True,True,moon2H
 -1,2018-05-07T00:44:40.975Z,sodapoppin,IRL,1950892,False,True,Skip friends DansGame
@@ -1037,7 +1037,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-15T14:04:15.209Z,riotgames,League of Legends,898219,False,False,squishy hunter gachiGASM
 0,2018-05-04T23:55:47.859Z,sodapoppin,Donkey Kong 64,941167,False,False,ppHop
 0,2018-05-20T09:59:29.137Z,riotgames,League of Legends,6494670,False,False,watapp
--1,2018-05-07T16:39:48.501Z,forsen,Barbie and the Magic of Pegasus,2775409,False,False,5000 BITCOINS Pog
+1,2018-05-07T16:39:48.501Z,forsen,Barbie and the Magic of Pegasus,2775409,False,False,5000 BITCOINS Pog
 0,2018-05-01T18:09:22.654Z,forsen,Fallout: New Vegas,2746072,False,False,??????????????????????
 1,2018-05-13T00:02:24.507Z,xqcow,Overwatch,295150,False,False,LUL LUL
 1,2018-05-15T16:59:26.264Z,forsen,Animal Super Squad,1317959,False,False,LULW
@@ -1108,7 +1108,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 -1,2018-05-03T21:50:08.528Z,xqcow,Overwatch,1199300,False,True,LOUDER PLS
 0,2018-05-06T18:26:12.796Z,forsen,Close Your Eyes,1257165,False,True,123
 1,2018-05-15T03:47:40.913Z,moonmoon_ow,Retro,63909,False,True,moon2M
-0,2018-05-09T22:32:03.203Z,sodapoppin,IRL,529685,False,False,60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog
+1,2018-05-09T22:32:03.203Z,sodapoppin,IRL,529685,False,False,60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog 60 SECONDS Pog
 0,2018-05-05T16:50:47.822Z,forsen,Fallout: New Vegas,990458,False,True,!vanish
 -1,2018-05-13T18:16:55.543Z,forsen,Super Mario Odyssey,20040,False,True,forsenWTF
 -1,2018-05-05T15:57:59.958Z,forsen,Fallout: New Vegas,45068,False,True,HowLongToBeat says Dead Money is 5 hours 30 mins and Old World Blues is 7 hours for main story forsen pajaDank
@@ -1120,7 +1120,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-14T05:21:08.806Z,xqcow,IRL,584686,False,True,OMEGALUL
 1,2018-05-23T06:16:43.716Z,moonmoon_ow,Throne of Lies: The Online Game of Deceit,7649819,False,True,@doserino_ moon2CUTE moon2CUTE moon2CUTE moon2CUTE moon2CUTE moon2CUTE moon2CUTE moon2CUTE
 0,2018-05-22T04:09:26.017Z,xqcow,Fortnite,2102680,False,False,WHO ARE YOU PLAYING WITH @xQcOW HELLOOOO
-0,2018-05-27T05:24:33.566Z,xqcow,Detroit: Become Human,64433,False,True,Pog
+1,2018-05-27T05:24:33.566Z,xqcow,Detroit: Become Human,64433,False,True,Pog
 0,2018-05-29T20:08:57.798Z,forsen,Dark Souls,4471,False,True,forsenS
 1,2018-05-09T20:24:42.209Z,xqcow,Overwatch,11847,False,True,LUL
 1,2018-05-17T18:48:16.115Z,forsen,House Flipper,765359,False,False,I MADE DIS :)
@@ -1156,7 +1156,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 -1,2018-05-03T20:40:11.117Z,xqcow,Overwatch,50699,False,True,cmonBrother
 -1,2018-05-26T05:41:19.641Z,moonmoon_ow,Dark Souls,7933718,False,True,did i forget to resub for a month and really lost the 15 month streak? FeelsBadMan
 -1,2018-05-25T07:58:31.405Z,sodapoppin,Detroit: Become Human,57458,True,True,FeelsWeirdMan chat
-0,2018-05-30T01:03:25.075Z,sodapoppin,Dark Souls,7836,False,False,Pog
+1,2018-05-30T01:03:25.075Z,sodapoppin,Dark Souls,7836,False,False,Pog
 1,2018-05-20T12:03:59.525Z,riotgames,League of Legends,670847,False,False,7 Tanks in one game POGGERS Healthy meta POGGERS 12 kills in 31 mins POGGERS Thanks riot POGGERS
 0,2018-05-21T15:10:46.990Z,moonmoon_ow,Dark Souls III,15,True,True,moon2N [14138] okays
 1,2018-05-17T01:26:35.463Z,sodapoppin,Wizard of Legend,484992,False,False,POGGERS
@@ -1167,7 +1167,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-19T16:56:57.348Z,forsen,STAY,8245328,False,True,FeelsGoodMan KISS ME
 -1,2018-05-12T08:24:10.760Z,riotgames,League of Legends,2589696,False,False,___ SMOrc only real ORC can build this perfect pyramid SMOrc SMOrc . Try like me !Try like me ! Try like me !! SMOrc SMOrcSMOrc SMOrc And my pyramid still higher!!!!!! SMOrc SMOrc SMOrc SMOrc
 -1,2018-05-03T02:52:38.050Z,sodapoppin,Ori and the Blind Forest,87544,False,False,PepeHands
-0,2018-05-18T22:01:42.567Z,sodapoppin,IRL,569034,False,True,mtg Pog
+1,2018-05-18T22:01:42.567Z,sodapoppin,IRL,569034,False,True,mtg Pog
 0,2018-05-11T16:01:52.657Z,forsen,IRL,8309956,False,False,LULW
 -1,2018-05-12T00:35:29.095Z,sodapoppin,Beat Saber,3329,False,False,NO
 1,2018-05-19T14:01:34.033Z,riotgames,League of Legends,11646537,False,False,<3
@@ -1190,7 +1190,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-09T02:14:21.778Z,xqcow,Overwatch,2098954,False,False,Tendies?
 1,2018-05-31T18:06:18.526Z,forsen,Dark Souls,582580,False,True,Jebaited
 1,2018-05-20T13:52:02.867Z,riotgames,League of Legends,5942697,False,False,WOW
-0,2018-05-18T20:13:24.381Z,xqcow,Overwatch,897919,False,False,120 BILLION Pog
+1,2018-05-18T20:13:24.381Z,xqcow,Overwatch,897919,False,False,120 BILLION Pog
 1,2018-05-16T00:05:42.347Z,sodapoppin,ROBLOX,4139589,False,True,sodaS sodaS sodaS sodaS sodaC sodaC sodaC sodaC sodaS sodaEMOJI sodaEMOJI sodaMONK sodaSHRUG sodaWipz sodaGN sodaEZ sodaEZ sodaGASP sodaPT sodaGR sodaGL sodaGL sodaFF sodaWat
 1,2018-05-09T11:02:52.698Z,sodapoppin,For the King,13350,False,True,boyish giggles
 1,2018-05-06T11:30:25.787Z,riotgames,League of Legends,856881,False,False,GG EZ
@@ -1255,7 +1255,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-26T16:18:55.309Z,forsen,Detroit: Become Human,110269,False,True,DEADLY ASSASSIN forsenCD DEADLY ASSASSIN forsenCD
 -1,2018-05-09T13:24:47.414Z,sodapoppin,Inked,371861,False,False,Pepepains
 0,2018-05-15T19:47:58.124Z,forsen,Laser League,127698,False,True,forsenCD
-0,2018-05-05T16:18:23.392Z,forsen,Fallout: New Vegas,2832601,False,True,MOVIE NIGHT Pog
+1,2018-05-05T16:18:23.392Z,forsen,Fallout: New Vegas,2832601,False,True,MOVIE NIGHT Pog
 -1,2018-05-15T15:42:29.097Z,riotgames,League of Legends,1226570,False,False,说两句得了，别一直刷啊
 0,2018-05-18T10:09:28.410Z,riotgames,League of Legends,568022,False,False,NA LUL
 0,2018-05-22T03:21:17.481Z,xqcow,Overwatch,2475329,False,False,POG
@@ -1278,8 +1278,8 @@ sentiment,date,channel,game,user,mod,subscriber,message
 -1,2018-05-23T05:25:25.982Z,xqcow,Until Dawn,914238,False,False,D I E
 0,2018-05-09T11:29:05.417Z,riotgames,League of Legends,160605,False,False,支那賤畜
 0,2018-05-02T16:58:48.957Z,forsen,Fallout: New Vegas,9757915,False,True,he didnt mean that literally
-0,2018-05-06T21:55:43.050Z,sodapoppin,Peggle 2,193203,False,False,Pog
-0,2018-05-30T00:24:38.945Z,xqcow,Overwatch,12197859,False,False,BUY ONE Pog
+1,2018-05-06T21:55:43.050Z,sodapoppin,Peggle 2,193203,False,False,Pog
+1,2018-05-30T00:24:38.945Z,xqcow,Overwatch,12197859,False,False,BUY ONE Pog
 -1,2018-05-20T13:24:23.800Z,riotgames,League of Legends,1244343,False,False,Squid1 PunOko Squid3 KonCha Squid4Squid1 PunOko Squid3 KonCha Squid4
 -1,2018-05-05T19:29:00.781Z,forsen,Fallout: New Vegas,2780828,False,False,GachiPls CORRUPTED SAVE GachiPls CORRUPTED SAVE GachiPls CORRUPTED SAVE GachiPls CORRUPTED SAVE GachiPls
 0,2018-05-13T03:29:19.964Z,moonmoon_ow,The Cat Lady,240892,False,True,WRONG
@@ -1305,13 +1305,13 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-28T18:29:45.396Z,sodapoppin,Bless Online,288347,False,False,S OMEGALUL N Y
 0,2018-05-05T20:17:45.964Z,forsen,Fallout: New Vegas,245841,False,True,!join Pog
 1,2018-05-29T05:19:42.793Z,moonmoon_ow,The Witcher 3: Wild Hunt,974542,False,True,LUL
-0,2018-05-21T18:54:26.710Z,forsen,FAR: Lone Sails,64931,False,True,Pog
+1,2018-05-21T18:54:26.710Z,forsen,FAR: Lone Sails,64931,False,True,Pog
 1,2018-05-03T04:00:18.254Z,moonmoon_ow,The Binding of Isaac: Afterbirth,111380,False,True,Clap Clap
 -1,2018-05-23T04:01:49.690Z,moonmoon_ow,Super Ghouls 'N Ghosts,163577,False,False,gross please stop
 1,2018-05-25T14:58:09.021Z,moonmoon_ow,Dark Souls,468965,False,False,"@MOONMOON_OW hey, have you beaten gay gorillaz already? :) im so funny right :)"
 0,2018-05-25T02:19:53.682Z,moonmoon_ow,Dark Souls,361341,False,True,moon2N
 1,2018-05-26T16:08:44.636Z,forsen,Detroit: Become Human,168060,False,False,4HEad
-0,2018-05-21T00:05:49.179Z,sodapoppin,Overwatch,301869,False,False,Pog
+1,2018-05-21T00:05:49.179Z,sodapoppin,Overwatch,301869,False,False,Pog
 -1,2018-05-13T08:20:21.563Z,riotgames,League of Legends,821617,False,False,NA LCS worst major league. LUL TL LUL TSM LUL CLG LUL C9 LUL
 1,2018-05-07T17:04:05.517Z,forsen,Barbie and the Magic of Pegasus,65157,False,False,LULW
 1,2018-05-02T22:56:06.851Z,sodapoppin,IRL,244965,False,True,PedoBear 👈 PedoBear *boop* PedoBear 👈 PedoBear *boop* PedoBear 👈 PedoBear *boop* PedoBear 👈 PedoBear *boop* PedoBear 👈 PedoBear *boop* PedoBear 👈 PedoBear *boop* PedoBear 👈 PedoBear *boop* PedoBear 👈 PedoBear *boop*
@@ -1333,7 +1333,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 -1,2018-05-09T15:05:32.111Z,sodapoppin,Inked,4444098,False,False,@sodapoppin you need a BBC up the arse mate!
 1,2018-05-29T00:07:50.017Z,sodapoppin,Bless Online,96684,False,True,sodaKEK
 1,2018-05-21T05:12:58.085Z,xqcow,Fortnite,3223025,False,False,cmonBruh
-0,2018-05-13T16:24:48.237Z,forsen,Super Mario Odyssey,443574,False,False,Pog
+1,2018-05-13T16:24:48.237Z,forsen,Super Mario Odyssey,443574,False,False,Pog
 -1,2018-05-15T06:42:48.527Z,moonmoon_ow,Retro,107778,False,True,FeelsWeirdMan
 1,2018-05-09T14:00:26.607Z,riotgames,League of Legends,2489998,False,False,FUNgineer 100%
 0,2018-05-25T03:48:33.353Z,moonmoon_ow,Dark Souls,2055292,False,False,She has two dicks
@@ -1355,7 +1355,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-16T17:05:41.748Z,forsen,The Council,150610,False,True,EZY Clap
 1,2018-05-17T23:01:59.809Z,sodapoppin,Wizard of Legend,811353,False,False,i made this game :)
 1,2018-05-12T19:34:24.396Z,forsen,Lake Ridden,64931,False,True,gachiGASM forsenWeb
-0,2018-05-23T01:46:21.125Z,sodapoppin,Overwatch,858291,False,False,Pog
+1,2018-05-23T01:46:21.125Z,sodapoppin,Overwatch,858291,False,False,Pog
 0,2018-05-20T06:38:16.602Z,xqcow,Fortnite,856226,False,True,AGANE
 1,2018-05-01T23:11:13.536Z,xqcow,Overwatch,3312,True,True,xqcLove chemistry_ow just joined the jungle! xqcLove Thanks so much for subbing xqcCat And supporting the stream! xqcCat
 0,2018-05-13T14:47:07.101Z,riotgames,League of Legends,12622981,False,False,XD
@@ -1377,7 +1377,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-12T16:05:49.822Z,forsen,IRL,107473,False,False,it was me :) Clap
 0,2018-05-18T23:20:12.072Z,xqcow,Overwatch,1624179,False,False,LISTEN TO THE PITCH THING PLS @xQcOW LISTEN TO THE PITCH THING PLS @xQcOW LISTEN TO THE PITCH THING PLS @xQcOW
 1,2018-05-06T23:31:26.006Z,sodapoppin,IRL,219953,False,True,TRUE LUL
-0,2018-05-10T21:21:23.696Z,forsen,Darwin Project,59217,False,False,Pog
+1,2018-05-10T21:21:23.696Z,forsen,Darwin Project,59217,False,False,Pog
 -1,2018-05-01T14:45:30.044Z,moonmoon_ow,Darkest Dungeon,840136,False,True,PepeHands SAUCEY PIGEON PepeHands SAUCEY PIGEON PepeHands SAUCEY PIGEON PepeHands SAUCEY PIGEON PepeHands SAUCEY PIGEON
 0,2018-05-19T02:37:02.299Z,moonmoon_ow,Getting Over It,12005400,False,True,BACK TO THE TREE OMEGALUL
 -1,2018-05-08T17:40:44.366Z,moonmoon_ow,Shovel Knight,3361561,False,False,@MOONMOON_OW weakness disgust me
@@ -1398,8 +1398,8 @@ sentiment,date,channel,game,user,mod,subscriber,message
 -1,2018-05-08T15:04:11.934Z,moonmoon_ow,Shovel Knight,10514,False,True,spike death INC
 1,2018-05-14T01:55:58.405Z,xqcow,Overwatch,1760502,False,False,LUL
 0,2018-05-06T04:01:04.349Z,moonmoon_ow,Close Your Eyes,1116635,False,True,12
-0,2018-05-03T19:09:24.538Z,forsen,Shoppe Keep 2,2342940,False,True,@forsen Pog MASS EFFECT TRILOGY Pog MASS EFFECT TRILOGY Pog MASS EFFECT TRILOGY
-0,2018-05-05T18:07:19.654Z,forsen,Fallout: New Vegas,8146929,False,True,Pog
+1,2018-05-03T19:09:24.538Z,forsen,Shoppe Keep 2,2342940,False,True,@forsen Pog MASS EFFECT TRILOGY Pog MASS EFFECT TRILOGY Pog MASS EFFECT TRILOGY
+1,2018-05-05T18:07:19.654Z,forsen,Fallout: New Vegas,8146929,False,True,Pog
 0,2018-05-26T03:48:36.845Z,moonmoon_ow,Dark Souls,472371,False,True,ATE IT
 1,2018-05-11T13:58:02.795Z,riotgames,League of Legends,10282,False,False,DL LUL
 0,2018-05-05T14:29:01.994Z,moonmoon_ow,Shovel Knight,117027,False,True,D: audible gasp
@@ -1412,7 +1412,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 -1,2018-05-26T20:06:01.631Z,forsen,Detroit: Become Human,11271,False,True,KKonaW FAKE PRESIDENT ⁭
 1,2018-05-12T20:58:09.584Z,forsen,Lake Ridden,1333,True,True,"WnbHaze, thank you so much for your 13 months of unbroken support to the Snus Brotherhood! forsenDDK forsenWhip"
 0,2018-05-21T23:28:21.804Z,xqcow,Overwatch,1318862,False,False,wutface
-0,2018-05-16T02:01:29.848Z,xqcow,Overwatch,10604362,False,False,Pog
+1,2018-05-16T02:01:29.848Z,xqcow,Overwatch,10604362,False,False,Pog
 1,2018-05-08T23:07:23.151Z,sodapoppin,Worms Reloaded,11643110,False,False,I have the high ground
 1,2018-05-25T13:28:16.197Z,sodapoppin,Detroit: Become Human,1252726,False,True,gachiBASS
 -1,2018-05-03T00:23:50.574Z,sodapoppin,IRL,451688,False,True,Not pretending PepeHands
@@ -1470,7 +1470,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-06T21:14:45.021Z,sodapoppin,Peggle 2,1504585,False,False,AUISTM
 0,2018-05-18T21:02:19.882Z,xqcow,Overwatch,3644109,False,False,@xQcOW 4HOUSE 7
 0,2018-05-25T16:24:05.532Z,forsen,Detroit: Become Human,899319,False,True,Kapp
-0,2018-05-20T15:55:04.736Z,forsen,IRL,137797,False,True,@forsen check out a game called Furi forsenPls bullethell fighter game Pog ⁭
+1,2018-05-20T15:55:04.736Z,forsen,IRL,137797,False,True,@forsen check out a game called Furi forsenPls bullethell fighter game Pog ⁭
 -1,2018-05-31T21:58:11.896Z,sodapoppin,Moonlighter,474989,False,False,gachiBASS
 1,2018-05-11T22:01:21.796Z,sodapoppin,IRL,391,False,True,LOOOOOOOOOOl
 1,2018-05-27T05:37:37.237Z,moonmoon_ow,Dark Souls,1159844,False,True,moon2M 🚬
@@ -1482,7 +1482,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 -1,2018-05-24T23:46:03.533Z,xqcow,Raft,676113,False,False,WutFace SHARK
 0,2018-05-03T03:36:44.686Z,sodapoppin,Ori and the Blind Forest,1162876,False,False,✓ amazW ✓ krippW ✓ trumpW ✓ btsLdW ✓ reynadW ✓ kolentoW ✓ bajW ✓ btsKotlW ✓ dewW ✓ emjaneW ✓ forsenW ✓ krippW ✓ mitchW ✓ singsingFcuk ✓ reckW ✓ sodaW ✓ btsGodzW ✓ merliniHappyMerlini ✓ taymooW ✓ rtzW ✓ admiralW ✓ envySwag ✓ sumailKappa ✓ btsMerliniW ✓ wtrWtR ✓ dagerDendi ✓ ppdSalt ✓ fearGASM ✓ singsingP ✓ fluffyW ✓ ratW ✓ Pleb test passed
 1,2018-05-30T02:58:22.919Z,moonmoon_ow,Baldi's Basics in Education and Learning,8549052,False,True,EZ
-0,2018-05-27T02:25:04.276Z,xqcow,Overwatch,239652,False,False,DK RAP Pog
+1,2018-05-27T02:25:04.276Z,xqcow,Overwatch,239652,False,False,DK RAP Pog
 0,2018-05-18T21:02:59.827Z,xqcow,Overwatch,804694,False,False,XQC won’t see me type JOMEGALULKE
 -1,2018-05-06T11:32:39.319Z,riotgames,League of Legends,3055100,False,False,"the name of graves is wrong, he feeds more than once Kappa"
 0,2018-05-04T03:13:29.378Z,xqcow,Fortnite,10428213,False,False,!song
@@ -1518,8 +1518,8 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-05T08:16:21.680Z,riotgames,League of Legends,1465640,False,False,FABFABULOUS---STOMAGED---GBM---ZEITGOD---SNOWFLOWER > ALL
 1,2018-05-07T16:51:13.727Z,forsen,Barbie and the Magic of Pegasus,24636,False,True,:D
 0,2018-05-25T14:39:46.304Z,moonmoon_ow,Dark Souls,1960751,False,True,FeelsWeirdMan 👉 OMEGAROLL
-0,2018-05-29T02:40:41.922Z,sodapoppin,Bless Online,8009865,False,False,Pog LEGENDARY HAMSTER
-0,2018-05-16T23:40:55.787Z,sodapoppin,Dungeon Stars,114149,False,True,Pog
+1,2018-05-29T02:40:41.922Z,sodapoppin,Bless Online,8009865,False,False,Pog LEGENDARY HAMSTER
+1,2018-05-16T23:40:55.787Z,sodapoppin,Dungeon Stars,114149,False,True,Pog
 0,2018-05-31T21:25:19.808Z,forsen,Dark Souls,5198836,False,False,VERY LARGE NEW LONDO
 -1,2018-05-25T17:17:03.023Z,sodapoppin,IRL,1887116,False,False,CHATS MOVING SO FAST NO ONE WILL KNOW IM GAY
 -1,2018-05-05T16:26:02.978Z,forsen,Fallout: New Vegas,1160,False,False,nymnS 👉 nanJail
@@ -1577,7 +1577,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-10T01:29:17.582Z,sodapoppin,IRL,20167,False,False,50 IQ OMEGALUL
 1,2018-05-09T05:13:58.877Z,moonmoon_ow,Conan Exiles,1143125,False,True,"Dicks are so cute omg(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄ when you hold one in your hand and it starts twitching its like its nuzzling you(/ω＼) or when they perk up and look at you like"" owo nya? :3c"" hehe ~ penis-kun is happy to see me!!（＾ワ＾） and the most adorable thing ever is when sperm-sama comes out but theyre rlly shy so u have to work hard!!(๑•̀ㅁ•́๑)✧ but when penis-kun and sperm-sama meet and theyre blushing and all like ""uwaaa~!"" (ﾉ´ヮ´)ﾉ: ･ﾟhehehe~penis-kun is so adorable (●´Д｀●)・"
 1,2018-05-12T17:08:30.712Z,forsen,Lake Ridden,63806,False,True,ZULUL
-0,2018-05-21T23:20:09.816Z,xqcow,Overwatch,12334211,False,True,Pog Champ
+1,2018-05-21T23:20:09.816Z,xqcow,Overwatch,12334211,False,True,Pog Champ
 0,2018-05-14T10:33:26.754Z,riotgames,League of Legends,855367,False,False,6-1
 1,2018-05-07T05:11:37.821Z,sodapoppin,IRL,45404,False,False,OMEGALUL
 0,2018-05-31T17:50:29.939Z,moonmoon_ow,Super Ghouls 'N Ghosts,8025190,False,True,"WEEB TEST TehePelo IF YOU TOUCH THE LOLI, YOU'RE GOING TO WEEB JAIL⎝ FeelsBadMan"
@@ -1597,14 +1597,14 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-17T02:43:50.020Z,sodapoppin,Wizard of Legend,340937,False,False,WTF DansGame
 0,2018-05-15T14:49:28.033Z,riotgames,League of Legends,1166787,False,False,WANNA GO M8
 -1,2018-05-29T14:51:15.474Z,moonmoon_ow,Dark Souls,4908321,False,True,"""Can I survive this?"" - guy who died, probably."
-0,2018-05-06T16:46:56.959Z,forsen,City of Brass,208267,False,False,Pog
+1,2018-05-06T16:46:56.959Z,forsen,City of Brass,208267,False,False,Pog
 1,2018-05-05T16:38:58.686Z,forsen,Fallout: New Vegas,1347744,False,True,AYAYA Clap WEEBS ALWAYS WIN AYAYA Clap
 0,2018-05-30T17:41:01.014Z,forsen,Dark Souls,472062,False,False,***
 1,2018-05-21T17:39:10.704Z,forsen,FAR: Lone Sails,925005,False,False,MORE gachiBASS
 0,2018-05-24T18:22:13.731Z,xqcow,Overwatch,144546,False,False,xQcOW 200mg PeepoGlad
 -1,2018-05-23T03:30:50.616Z,xqcow,Until Dawn,2312946,False,True,xqcFace ANTI SPOILER SPAM xqcFace ANTI SPOILER SPAM xqcFace ANTI SPOILER SPAM xqcFace ANTI SPOILER SPAM xqcFace ANTI SPOILER SPAM xqcFace ANTI SPOILER SPAM xqcFace ANTI SPOILER SPAM xqcFace ANTI SPOILER SPAM xqcFace ANTI SPOILER SPAM xqcFace ANTI SPOILER SPAM
 -1,2018-05-27T05:06:50.464Z,moonmoon_ow,Dark Souls,991263,False,False,monkaS
-0,2018-05-12T18:08:30.298Z,forsen,Lake Ridden,2285955,False,True,Pog
+1,2018-05-12T18:08:30.298Z,forsen,Lake Ridden,2285955,False,True,Pog
 -1,2018-05-06T22:33:41.963Z,sodapoppin,Peggle 2,2489503,False,False,D:
 0,2018-05-18T22:12:44.852Z,sodapoppin,IRL,3417103,False,True,OMG
 -1,2018-05-15T23:59:38.744Z,xqcow,Overwatch,75610,False,True,CAN SOMEONE EXPLAIN WHY THE TEAM DID THAT?
@@ -1617,7 +1617,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-20T16:43:55.142Z,forsen,Barbie and the Magic of Pegasus,2342940,False,True,monkaOMEGA
 1,2018-05-24T16:24:39.885Z,forsen,IRL,171954,False,True,KKool 🎸
 1,2018-05-08T20:47:56.511Z,xqcow,Overwatch,1413982,False,True,!drop
-0,2018-05-02T17:06:04.753Z,forsen,Fallout: New Vegas,811236,False,True,NUKA COLA VICTORY Pog TAKE IT Pog NUKA COLA VICTORY Pog TAKE IT Pog .
+1,2018-05-02T17:06:04.753Z,forsen,Fallout: New Vegas,811236,False,True,NUKA COLA VICTORY Pog TAKE IT Pog NUKA COLA VICTORY Pog TAKE IT Pog .
 0,2018-05-14T01:33:57.878Z,riotgames,League of Legends,145769,False,False,they need to make overwatch like other moba games and have 1 per match rules with the heroes
 1,2018-05-09T08:30:03.489Z,sodapoppin,For the King,1466948,False,False,Yoink TriHard
 1,2018-05-03T22:59:44.147Z,xqcow,Overwatch,141261,False,False,SourPls
@@ -1642,9 +1642,9 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-29T19:39:22.879Z,forsen,Dark Souls,12381817,False,False,***
 1,2018-05-10T01:27:52.732Z,sodapoppin,IRL,3004776,False,True,I drew this :)
 0,2018-05-15T09:07:19.675Z,riotgames,League of Legends,704797,False,False,HotPokket did you assume my gender? HotPokket
--1,2018-05-27T20:09:42.690Z,forsen,Dark Souls,537163,False,False,Pog WTF
+1,2018-05-27T20:09:42.690Z,forsen,Dark Souls,537163,False,False,Pog WTF
 0,2018-05-20T00:06:59.654Z,sodapoppin,Fast Beat Loop Racer GT,5319813,False,False,LULW
-0,2018-05-10T04:57:23.747Z,xqcow,IRL,2925423,False,False,Pog
+1,2018-05-10T04:57:23.747Z,xqcow,IRL,2925423,False,False,Pog
 1,2018-05-30T04:10:28.073Z,moonmoon_ow,Baldi's Basics in Education and Learning,186351,False,False,HotPokket
 -1,2018-05-15T15:05:31.874Z,riotgames,League of Legends,553981,False,False,soraka ResidentSleeper
 0,2018-05-29T21:38:23.248Z,sodapoppin,Agony,985664,False,True,I C forsen1
@@ -1685,7 +1685,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-09T05:29:11.582Z,moonmoon_ow,Conan Exiles,15,True,True,"Check out the fan art gallery with creations from Moonmoon’s awesome community! All pictures are credited to the person’s twitter handle, be sure to check them out! 🌙 ² https://www.dropbox.com/sh/kkxcb9pcwqppb25/AACAHFqJJ0ontDZxYi0kr04Da?dl=0 🌙 ² Last updated 4/20/18"
 -1,2018-05-10T18:00:24.154Z,forsen,Darwin Project,27446,False,False,@Greekgodx FeelsWeirdMan 👉 🚪
 1,2018-05-27T18:55:06.614Z,forsen,Dark Souls,61167,False,True,forsenE
-0,2018-05-06T22:34:23.929Z,sodapoppin,Peggle 2,5651520,False,False,Pog
+1,2018-05-06T22:34:23.929Z,sodapoppin,Peggle 2,5651520,False,False,Pog
 -1,2018-05-31T18:33:02.472Z,forsen,Dark Souls,59217,False,False,Can somebody fuck me in the ass ?
 -1,2018-05-29T02:36:26.105Z,sodapoppin,Bless Online,12494934,False,True,TWITCH STAFF sodaMONK sodaMONK
 0,2018-05-10T20:24:12.475Z,forsen,Darwin Project,359975,False,False,Pepepains oof
@@ -1748,7 +1748,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 0,2018-05-15T14:58:19.479Z,riotgames,League of Legends,501700,False,False,7777777777777777
 -1,2018-05-29T20:42:03.956Z,sodapoppin,IRL,280277,False,False,monkaS
 -1,2018-05-12T14:58:06.392Z,moonmoon_ow,Salt and Sanctuary,872723,False,False,😡 READ THE DONO
--1,2018-05-10T07:15:31.321Z,xqcow,Darwin Project,131953,False,False,Pog
+1,2018-05-10T07:15:31.321Z,xqcow,Darwin Project,131953,False,False,Pog
 1,2018-05-13T03:08:39.410Z,moonmoon_ow,The Cat Lady,468688,False,True,FeelsAmazingMan 🔫
 1,2018-05-04T08:54:20.755Z,moonmoon_ow,Darkest Dungeon,160662,False,True,Clap2 POGGERS
 1,2018-05-07T17:00:51.631Z,forsen,Barbie and the Magic of Pegasus,759081,False,False,FeelsGoodMan Clap
@@ -1802,7 +1802,7 @@ sentiment,date,channel,game,user,mod,subscriber,message
 1,2018-05-27T17:24:57.863Z,forsen,Dark Souls,60750,False,True,ZULUL
 0,2018-05-04T03:01:43.380Z,sodapoppin,For the King,594583,False,True,FeelsOkayMan 🚬 💨
 1,2018-05-11T13:41:45.801Z,riotgames,League of Legends,1409707,False,False,: TriHard only real trihard can build this perfect pyramid TriHard TriHard . Try like me !Try like me ! Try like me !! TriHard TriHard TriHard And my pyramid still higher!!!!!! TriHard TriHard TriHard
-0,2018-05-08T21:48:48.432Z,sodapoppin,IRL,40936,False,False,Pog
+1,2018-05-08T21:48:48.432Z,sodapoppin,IRL,40936,False,False,Pog
 -1,2018-05-24T18:04:40.673Z,forsen,Raft,600007,False,False,PepeHands ANCIENT FORSEN PepeHands ANCIENT FORSEN PepeHands ANCIENT FORSEN PepeHands ANCIENT FORSEN .
 0,2018-05-09T02:27:06.772Z,xqcow,Overwatch,8494054,False,False,what was the name of that song tho!!
 1,2018-05-11T16:45:01.166Z,forsen,Barbie and the Magic of Pegasus,29622,False,True,i did :)
@@ -1899,8 +1899,8 @@ sentiment,date,channel,game,user,mod,subscriber,message
 -1,2018-05-27T02:17:24.609Z,xqcow,Overwatch,1189845,False,False,monkaS
 0,2018-05-07T15:44:49.068Z,forsen,IRL,827682,False,False,RarestParrot
 1,2018-05-08T05:34:20.275Z,moonmoon_ow,Throne of Lies: The Online Game of Deceit,439955,False,True,@Immersions_OW smile like this moon2S not like this :) now
-0,2018-05-29T18:08:43.891Z,forsen,Dark Souls,2851534,False,True,Pog
-0,2018-05-02T02:33:35.339Z,xqcow,Overwatch,89767,False,False,Pog
+1,2018-05-29T18:08:43.891Z,forsen,Dark Souls,2851534,False,True,Pog
+1,2018-05-02T02:33:35.339Z,xqcow,Overwatch,89767,False,False,Pog
 1,2018-05-27T20:25:44.780Z,forsen,Dark Souls,416336,False,False,TriHard
 1,2018-05-11T15:15:09.526Z,riotgames,League of Legends,494906,False,False,LUL
 -1,2018-05-13T03:38:19.002Z,moonmoon_ow,The Cat Lady,2131257,False,True,SHUTUP AND LET ME CUM IN YOU BITCH @MOONMOON_OW

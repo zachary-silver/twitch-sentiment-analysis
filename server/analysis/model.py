@@ -18,6 +18,13 @@ TEST_SIZE = 0.20
 RANDOM_STATE = 0
 ITERATIONS = 50
 
+VECTORIZER = TfidfVectorizer(
+        max_features=MAX_WORDS,
+        min_df=MIN_DOC_FREQUENCY,
+        max_df=MAX_DOC_FREQUENCY,
+        stop_words=stopwords.words('english')
+        )
+
 
 def save_model(model, name):
     joblib.dump(model, './models/{}.joblib'.format(name), compress=3)
@@ -25,6 +32,10 @@ def save_model(model, name):
 
 def load_model(name):
     return joblib.load('./models/{}.joblib'.format(name))
+
+
+def predict(message, model):
+    return model.predict(get_vector(message).reshape(1, -1))
 
 
 def get_mlp_model(messages, sentiments):
@@ -49,15 +60,12 @@ def get_rf_model(messages, sentiments):
     return rf_classifier
 
 
-def get_tfidf_vectors(messages):
-    vectorizer = TfidfVectorizer(
-            max_features=MAX_WORDS,
-            min_df=MIN_DOC_FREQUENCY,
-            max_df=MAX_DOC_FREQUENCY,
-            stop_words=stopwords.words('english')
-            )
+def get_vectors(messages):
+    return VECTORIZER.fit_transform(messages).toarray()
 
-    return vectorizer.fit_transform(messages).toarray()
+
+def get_vector(message):
+    return VECTORIZER.transform([message]).toarray()[0]
 
 
 def preprocess(message):
@@ -76,31 +84,55 @@ def preprocess(message):
     return message.strip().lower()
 
 
-def normalize_sentiment(sentiment):
+def normalize_twitter_sentiment(sentiment):
     return 1 if sentiment == '5' else (0 if sentiment == '3' else -1)
+
+
+def normalize_emote_sentiment(sentiment):
+    sentiment = float(sentiment)
+
+    if (sentiment > 0.33):
+        return 1
+    if (sentiment < -0.33):
+        return -1
+
+    return 0
 
 
 def get_twitter_data():
     data = pandas.read_csv('./data/twitter_labeled_dataset.csv')
+    data = data[data.sentiment != 'not_relevant']
+    messages = [preprocess(message) for message in data['text']]
+    sentiments = [normalize_twitter_sentiment(s) for s in data['sentiment']]
 
-    return data[data.sentiment != 'not_relevant']
+    return (messages, sentiments)
 
 
 def get_twitch_data():
-    return pandas.read_csv('./data/labeled_dataset.csv')
+    data = pandas.read_csv('./data/labeled_dataset.csv')
+    messages = [preprocess(message) for message in data['message']]
+    sentiments = [s for s in data['sentiment']]
+
+    return (messages, sentiments)
+
+
+def get_twitch_lexicon_data():
+    data = pandas.read_csv('./lexica/emote_average.tsv', sep='\t')
+    emotes = [preprocess(emote) for emote in data['word']]
+    sentiments = [normalize_emote_sentiment(s) for s in data['sentiment']]
+
+    return (emotes, sentiments)
 
 
 def main():
-    data = get_twitch_data()
-    twitch_messages = [preprocess(message) for message in data['message']]
-    twitch_sentiments = [s for s in data['sentiment']]
+    twitch_messages, twitch_sentiments = get_twitch_data()
+    emotes, emotes_sentiments = get_twitch_lexicon_data()
+    # twitter_messages, twitter_sentiments = get_twitter_data()
+    # twitter_messages = twitter_messages[:len(twitch_messages)]
+    # twitter_sentiments = twitter_sentiments[:len(twitch_sentiments)]
 
-    data = get_twitter_data()
-    twitter_messages = [preprocess(message) for message in data['text']]
-    twitter_sentiments = [normalize_sentiment(s) for s in data['sentiment']]
-
-    messages = get_tfidf_vectors(twitch_messages + twitter_messages)
-    sentiments = twitch_sentiments + twitter_sentiments
+    messages = get_vectors(twitch_messages + emotes)
+    sentiments = twitch_sentiments + emotes_sentiments
 
     x_train, x_test, y_train, y_test = train_test_split(
             messages,
@@ -109,11 +141,10 @@ def main():
             random_state=RANDOM_STATE
             )
 
-    # model = get_rf_model(x_train, y_train)
+    model = get_rf_model(x_train, y_train)
     # model = get_mlp_model(x_train, y_train)
-    # model = load_model('mlp_50_iterations')
-    model = load_model('random_forest')
-    # save_model(model, 'mlp_50_iterations')
+    # model = load_model('rf_with_emotes')
+    # save_model(model, 'rf_with_emotes')
     predictions = model.predict(x_test)
 
     print(classification_report(y_test, predictions))

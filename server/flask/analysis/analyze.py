@@ -26,16 +26,25 @@ VECTORIZER = TfidfVectorizer(
         )
 
 
-def save_model(model, name):
-    joblib.dump(model, './models/{}.joblib'.format(name), compress=3)
+def save_model(model, file):
+    joblib.dump(model, '{}.joblib'.format(file), compress=3)
 
 
-def load_model(name):
-    return joblib.load('./models/{}.joblib'.format(name))
+def load_model(file):
+    return joblib.load('{}.joblib'.format(file))
 
 
-def predict(message, model):
-    return model.predict(get_vector(message).reshape(1, -1))
+def predict_message(message, model):
+    return model.predict(get_vector(preprocess(message)).reshape(1, -1))
+
+
+def predict_messages(messages, model):
+    if len(messages) < MAX_WORDS:
+        return [predict_message(message, model) for message in messages]
+
+    messages = [preprocess(message) for message in messages]
+
+    return model.predict(get_vectors(messages))
 
 
 def get_mlp_model(messages, sentiments):
@@ -60,12 +69,16 @@ def get_rf_model(messages, sentiments):
     return rf_classifier
 
 
-def get_vectors(messages):
+def fit_and_get_vectors(messages):
     return VECTORIZER.fit_transform(messages).toarray()
 
 
+def get_vectors(messages):
+    return VECTORIZER.transform(messages).toarray()
+
+
 def get_vector(message):
-    return VECTORIZER.transform([message]).toarray()[0]
+    return get_vectors([message])[0]
 
 
 def preprocess(message):
@@ -91,12 +104,7 @@ def normalize_twitter_sentiment(sentiment):
 def normalize_emote_sentiment(sentiment):
     sentiment = float(sentiment)
 
-    if (sentiment > 0.33):
-        return 1
-    if (sentiment < -0.33):
-        return -1
-
-    return 0
+    return 1 if sentiment > 0.33 else (-1 if sentiment < -0.33 else 0)
 
 
 def get_twitter_data():
@@ -108,30 +116,45 @@ def get_twitter_data():
     return (messages, sentiments)
 
 
-def get_twitch_data():
-    data = pandas.read_csv('./data/labeled_dataset.csv')
+def get_twitch_data(file):
+    data = pandas.read_csv(file)
     messages = [preprocess(message) for message in data['message']]
     sentiments = [s for s in data['sentiment']]
 
     return (messages, sentiments)
 
 
-def get_twitch_lexicon_data():
-    data = pandas.read_csv('./lexica/emote_average.tsv', sep='\t')
+def get_twitch_lexicon_data(file):
+    data = pandas.read_csv(file, sep='\t')
     emotes = [preprocess(emote) for emote in data['word']]
     sentiments = [normalize_emote_sentiment(s) for s in data['sentiment']]
 
     return (emotes, sentiments)
 
 
-def main():
-    twitch_messages, twitch_sentiments = get_twitch_data()
-    emotes, emotes_sentiments = get_twitch_lexicon_data()
-    # twitter_messages, twitter_sentiments = get_twitter_data()
-    # twitter_messages = twitter_messages[:len(twitch_messages)]
-    # twitter_sentiments = twitter_sentiments[:len(twitch_sentiments)]
+def setup(analysis_dir):
+    twitch_file = '{}/data/labeled_dataset.csv'.format(analysis_dir)
+    emotes_file = '{}/lexica/emote_average.tsv'.format(analysis_dir)
 
-    messages = get_vectors(twitch_messages + emotes)
+    twitch_messages, _ = get_twitch_data(twitch_file)
+    emotes, _ = get_twitch_lexicon_data(emotes_file)
+
+    fit_and_get_vectors(twitch_messages + emotes)
+
+
+def main():
+    # twitch_file = './data/temp.csv'
+    # setup('.')
+    # twitch_messages, twitch_sentiments = get_twitch_data(twitch_file)
+    # model = load_model('./models/rf_with_emotes')
+    # print(predict_messages(twitch_messages, model))
+    twitch_file = './data/labeled_dataset.csv'
+    emotes_file = './lexica/emote_average.tsv'
+
+    twitch_messages, twitch_sentiments = get_twitch_data(twitch_file)
+    emotes, emotes_sentiments = get_twitch_lexicon_data(emotes_file)
+
+    messages = fit_and_get_vectors(twitch_messages + emotes)
     sentiments = twitch_sentiments + emotes_sentiments
 
     x_train, x_test, y_train, y_test = train_test_split(
@@ -142,9 +165,8 @@ def main():
             )
 
     model = get_rf_model(x_train, y_train)
-    # model = get_mlp_model(x_train, y_train)
-    # model = load_model('rf_with_emotes')
-    # save_model(model, 'rf_with_emotes')
+    # model = load_model('./models/rf_with_emotes')
+    # save_model(model, './models/rf_with_emotes')
     predictions = model.predict(x_test)
 
     print(classification_report(y_test, predictions))

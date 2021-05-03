@@ -3,6 +3,7 @@ import './SentimentGraphOptions.css'
 import DateTimePicker from 'react-datetime-picker'
 import './DateTimePicker.css'
 
+const msInSecond = 1000;
 const msInDay = 24 * 60 * 60 * 1000;
 
 function SentimentGraphOptions(props) {

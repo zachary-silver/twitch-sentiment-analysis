@@ -8,7 +8,8 @@ import DateTimePicker from 'react-datetime-picker'
 import './DateTimePicker.css'
 import { CSVLink, CSVDownload } from "react-csv"
 
-const msInMinute = 60 * 1000;
+const msInSecond = 1000;
+const msInMinute = msInSecond * 60;
 const msInHour = msInMinute * 60;
 const msInDay = msInHour * 24;
 const msInWeek = msInDay * 7;
@@ -27,17 +28,28 @@ function SentimentGraph(props) {
 
   useEffect(getMinDate, []);
 
-  async function getMessages(dateTime) {
+  async function getMessages(dateTime, page = 0, cache = []) {
     if (dateTime) {
       setLoading(true);
 
       const minDate = dateTime.getTime();
-      const maxDate = new Date(minDate + 1 * msInDay).getTime();
-      const url = `http://localhost:3000/twitch/messages/${minDate}-${maxDate}`;
+      const maxDate = new Date(minDate + 8 * msInDay).getTime();
+      const url = `http://localhost:3000/twitch/messages` +
+                  `/${minDate}-${maxDate}/${page}`;
 
       fetch(url, { credentials: 'include' })
         .then(response => response.json())
-        .then(result => setMessages(result.messages) || setLoading(false));
+        .then(result => {
+          cache.push(...result.messages);
+
+          setMessages([...cache]);
+
+          if (result.nextPage > page) {
+            getMessages(dateTime, page + 1, cache);
+          } else {
+            setLoading(false);
+          }
+        });
     }
   }
 

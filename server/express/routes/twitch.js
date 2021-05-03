@@ -24,6 +24,29 @@ function clearSession(req, res) {
   });
 }
 
+async function retrieveSentiments(result, res) {
+  const nextPage = result.nextPage;
+  const messages = result.messages;
+
+  fetch('http://localhost:8080/predict', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({messages: messages})
+  })
+    .then(response => response.json())
+    .then(result => {
+      res.send({
+        messages: result.sentiments.map((sentiment, index) => {
+          return {
+            time_stamp: messages[index].time_stamp,
+            sentiment: sentiment
+          };
+        }),
+        nextPage: nextPage
+      });
+    });
+}
+
 db.mongoose
   .connect(db.url, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
@@ -144,21 +167,18 @@ router.get('/users', (req, res) => {
 });
 
 router.get('/messages/oldest', (req, res) => {
-  const user = req.session?.passport?.user;
+  let user = req.session?.passport?.user;
 
   if (user) {
-    // db.models.MessagesModel.aggregate([
-    //   {
-    //     $group: {
-    //       _id: {},
-    //       oldest: { $min: "$time_stamp" }
-    //     }
-    //   }
-    // ]);
+    let channel = `#${user.display_name.toLowerCase()}`;
+
+    if (channel === '#creamyzor') {
+      channel = '#moonmoon';
+    }
 
     db.models.MessageModel
       .findOne({
-        // channel: `#${user['display_name']}`,
+        channel: channel
       })
       .exec((err, result) => {
         if (!err) {
@@ -172,36 +192,37 @@ router.get('/messages/oldest', (req, res) => {
   }
 });
 
-router.get('/messages/:from-:to', (req, res) => {
+router.get('/messages/:from-:to/:page', (req, res) => {
   const user = req.session?.passport?.user;
-  const sentiments = [
-    'positive', 'positive', 'negative', 'neutral', 'neutral', 'neutral'
-  ];
-  const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
+  const pageSize = 100000;
 
   if (user) {
-    const from = new Date(parseInt(req.params.from)).toISOString()
-    const to = new Date(parseInt(req.params.to)).toISOString()
+    const from = new Date(parseInt(req.params.from)).toISOString();
+    const to = new Date(parseInt(req.params.to)).toISOString();
+    const page = parseInt(req.params.page);
+    let channel = `#${user.display_name.toLowerCase()}`;
+
+    if (channel === '#creamyzor') {
+      channel = '#moonmoon';
+    }
 
     db.models.MessageModel
       .find({
-        // channel: `#${user['display_name']}`,
+        channel: channel,
         time_stamp: { $gte: from, $lt: to }
       })
+      .skip(page * pageSize)
+      .limit(pageSize)
       .exec((err, result) => {
         if (!err) {
-          res.send({ messages: result.map(msg => {
-            return {
-              'time_stamp': msg['time_stamp'],
-              'sentiment': sentiments[getRandomInt(sentiments.length)]
-            };
-          })});
+          const nextPage = result.length < pageSize ? page : page + 1;
+          retrieveSentiments({ messages: result, nextPage: nextPage }, res);
         } else {
-          res.send({ messages: [] });
+          res.send({ messages: [], nextPage: -1 });
         }
       });
   } else {
-    res.send({ messages: [] });
+    res.send({ messages: [], nextPage: -1 });
   }
 });
 

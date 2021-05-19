@@ -1,14 +1,13 @@
 const express     = require('express');
 const session     = require('express-session');
 const cors        = require('cors');
-const config      = require('./config');
-const indexRoute  = require('./routes/index');
+const dotenv      = require('dotenv');
 const twitchRoute = require('./routes/twitch');
 
 const app = express();
 
 app.use(session({
-    secret: config.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false
   }));
@@ -20,9 +19,8 @@ app.use(cors({
   credentials: true
 }));
 
-app.use('/', indexRoute.router);
 app.use('/twitch', twitchRoute.router);
 
-app.listen(config.PORT, () => {
-  console.log(`Listening on port ${config.PORT}`)
+app.listen(process.env.PORT, () => {
+  console.log(`Listening on port ${process.env.PORT}`)
 });

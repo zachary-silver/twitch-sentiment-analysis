@@ -7,55 +7,77 @@ const msInSecond = 1000;
 const msInDay = 24 * 60 * 60 * 1000;
 
 function SentimentGraphOptions(props) {
-  const [dateTime, setDateTime] = useState(null);
+  const [fromDateTime, setFromDateTime] = useState(null);
+  const [toDateTime, setToDateTime] = useState(null);
   const currentDate = new Date();
 
-  useEffect(() => props.setDateTime(dateTime), [dateTime]);
+  useEffect(() => props.setFromDateTime(fromDateTime), [fromDateTime]);
+  useEffect(() => props.setToDateTime(toDateTime), [toDateTime]);
 
-  function handleDateTime(dateTime) {
-    setDateTime(dateTime);
+  async function handleRetrieve(fromDateTime, toDateTime) {
+    props.getMessages(fromDateTime, toDateTime);
+    props.setInfoSelected(false);
   }
 
-  function handleRetrieve(dateTime) {
-    props.getMessages(dateTime);
-  }
-
-  function handleTimeFrame(timeFrame) {
+  async function handleTimeFrame(timeFrame) {
     props.setTimeFrame(timeFrame);
+    props.setInfoSelected(false);
   }
 
   return (
     <div className='SentimentGraphOptions'>
-      <div className='DateTime'>
-        <DateTimePicker className='DateTimePicker'
-          onChange={handleDateTime}
-          value={dateTime}
-          minDate={props.minDate}
-          maxDate={currentDate}
-          disableClock={true}
-          clearIcon={null}
-          format='MM/dd/y hh:mm a'
-        />
+      <div className='UpperOptions'>
+        <div className='DateTime'>
+          <span className='Label'>From:</span>
+          <DateTimePicker className='DateTimePicker'
+            onChange={setFromDateTime}
+            value={fromDateTime}
+            minDate={props.minDate}
+            maxDate={currentDate}
+            disableClock={true}
+            clearIcon={null}
+            format='MM/dd/y hh:mm a'
+          />
+        </div>
+        <div className='DateTime'>
+          <span className='Label'>To:</span>
+          <DateTimePicker className='DateTimePicker'
+            onChange={setToDateTime}
+            value={toDateTime}
+            minDate={fromDateTime}
+            maxDate={currentDate}
+            disableClock={true}
+            clearIcon={null}
+            format='MM/dd/y hh:mm a'
+          />
+        </div>
+        <div className='Retrieve'>
+          <button onClick={() => handleRetrieve(fromDateTime, toDateTime)}>
+            Retrieve Messages
+          </button>
+        </div>
       </div>
-      <div className='Retrieve'>
-        <button onClick={() => handleRetrieve(dateTime)}>
-          {props.loading ? 'Retrieving...' : 'Retrieve Messages'}
-        </button>
-      </div>
-      <div className='TimeFrame'>
-        <button onClick={() => handleTimeFrame(props.Hour)}>
-          View Hour
-        </button>
-      </div>
-      <div className='TimeFrame'>
-        <button onClick={() => handleTimeFrame(props.Day)}>
-          View Day
-        </button>
-      </div>
-      <div className='TimeFrame'>
-        <button onClick={() => handleTimeFrame(props.Week)}>
-          View Week
-        </button>
+      <div className='LowerOptions'>
+        <div className='TimeFrame'>
+          <button onClick={() => handleTimeFrame(props.Hour)}>
+            View Hour
+          </button>
+        </div>
+        <div className='TimeFrame'>
+          <button onClick={() => handleTimeFrame(props.Day)}>
+            View Day
+          </button>
+        </div>
+        <div className='TimeFrame'>
+          <button onClick={() => handleTimeFrame(props.Week)}>
+            View Week
+          </button>
+        </div>
+        <div className='InfoButton'>
+          <button onClick={() => props.setInfoSelected(true)}>
+            View More Info
+          </button>
+        </div>
       </div>
     </div>
   );

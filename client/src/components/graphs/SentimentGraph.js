@@ -4,9 +4,13 @@ import SentimentGraphOptions from './SentimentGraphOptions'
 import SentimentGraphStats from './SentimentGraphStats'
 import StackedLineGraph from '../graphs/StackedLineGraph'
 import Legend from './Legend'
+import Info from '../Info'
 import DateTimePicker from 'react-datetime-picker'
 import './DateTimePicker.css'
 import { CSVLink, CSVDownload } from "react-csv"
+import PropagateLoader from "react-spinners/PropagateLoader";
+
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const msInSecond = 1000;
 const msInMinute = msInSecond * 60;
@@ -16,26 +20,37 @@ const msInWeek = msInDay * 7;
 const Hour = 'Hour';
 const Day = 'Day';
 const Week = 'Week';
+const Positive = 1;
+const Negative = -1;
+const Neutral = 0;
 
 function SentimentGraph(props) {
   const [messages, setMessages] = useState([]);
-  const [dateTime, setDateTime] = useState(null);
+  const [fromDateTime, setFromDateTime] = useState(null);
+  const [toDateTime, setToDateTime] = useState(null);
   const [timeFrame, setTimeFrame] = useState(Hour);
   const [minDate, setMinDate] = useState(null);
+  const [infoSelected, setInfoSelected] = useState(false);
+  const [graphData, setGraphData] = useState([]);
+  const [positiveStats, setPositiveStats] = useState({});
+  const [negativeStats, setNegativeStats] = useState({});
+  const [neutralStats, setNeutralStats] = useState({});
+  const [averages, setAverages] = useState({});
+  const [accuracy, setAccuracy] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const graphData = getGraphData(messages, timeFrame, dateTime);
-
   useEffect(getMinDate, []);
+  useEffect(getModelReport, []);
+  useEffect(() => getGraphData(messages, timeFrame, fromDateTime, toDateTime),
+    [timeFrame, fromDateTime, toDateTime, messages]);
 
-  async function getMessages(dateTime, page = 0, cache = []) {
-    if (dateTime) {
+  async function getMessages(fromDateTime, toDateTime, page = 0, cache = []) {
+    if (fromDateTime) {
       setLoading(true);
 
-      const minDate = dateTime.getTime();
-      const maxDate = new Date(minDate + 8 * msInDay).getTime();
-      const url = `http://localhost:3000/twitch/messages` +
-                  `/${minDate}-${maxDate}/${page}`;
+      const minDate = fromDateTime.getTime();
+      const maxDate = toDateTime.getTime();
+      const url = `${SERVER_URL}/twitch/messages/${minDate}-${maxDate}/${page}`;
 
       fetch(url, { credentials: 'include' })
         .then(response => response.json())
@@ -45,7 +60,7 @@ function SentimentGraph(props) {
           setMessages([...cache]);
 
           if (result.nextPage > page) {
-            getMessages(dateTime, page + 1, cache);
+            getMessages(fromDateTime, toDateTime, page + 1, cache);
           } else {
             setLoading(false);
           }
@@ -53,8 +68,8 @@ function SentimentGraph(props) {
     }
   }
 
-  function getMinDate() {
-    const url = 'http://localhost:3000/twitch/messages/oldest';
+  async function getMinDate() {
+    const url = `${SERVER_URL}/twitch/messages/oldest`;
 
     fetch(url, { credentials: 'include' })
       .then(response => response.json())
@@ -94,26 +109,20 @@ function SentimentGraph(props) {
     }
   }
 
-  function getCountsData(counts) {
-    return Object.entries(counts).map(([time, count]) => {
-      return { 'x': time, 'y': count };
-    })
-  }
-
   function getSentimentColor(sentiment) {
     switch (sentiment) {
-      case 'positive':
+      case Positive:
         return '#71bdb4';
-      case 'negative':
+      case Negative:
         return '#a35a52';
-      case 'neutral':
+      case Neutral:
         return '#bab7a2';
       default:
         console.error(`getSentimentColor(${sentiment}) fell through switch!`);
     }
   }
 
-  function filterMessages(messages, timeFrame, dateTime) {
+  function filterMessages(messages, timeFrame, fromDateTime) {
     let timeRange;
 
     switch(timeFrame) {
@@ -131,52 +140,79 @@ function SentimentGraph(props) {
     }
 
     return messages.filter(msg => {
-      const difference = new Date(msg['time_stamp']) - dateTime;
+      const difference = new Date(msg['time_stamp']) - fromDateTime;
       return difference < timeRange && difference >= 0;
     });
   }
 
-  function getGraphData(messages, timeFrame, dateTime) {
-    if (messages.length == 0) { return []; }
+  function getSentimentName(sentiment) {
+    switch (sentiment) {
+      case Positive:
+        return 'positive';
+      case Negative:
+        return 'negative';
+      case Neutral:
+        return 'neutral';
+      default:
+        console.error(`getSentimentName(${sentiment}) fell through switch!`);
+    }
+  }
 
-    messages = filterMessages(messages, timeFrame, dateTime);
-    let sentimentCounts = { positive: {}, negative: {}, neutral: {} };
+  function getCountsData(counts) {
+    return Object.entries(counts).map(([time, count]) => {
+      return { 'x': time, 'y': count };
+    })
+  }
+
+  async function getGraphData(messages, timeFrame, fromDateTime) {
+    if (messages.length == 0) {
+      setGraphData([]);
+      return;
+    }
+
+    messages = filterMessages(messages, timeFrame, fromDateTime);
+    let sentimentCounts = [{}, {}, {}];
 
     // Populate message sentiment counts at the appropriate times.
     for (const msg of messages) {
       const msgSentiment = msg['sentiment'];
       const msgDate = new Date(msg['time_stamp']);
       const units = getUnits(timeFrame);
-      const time = Math.floor(getTimeBetween(dateTime, msgDate, units));
-      let counts = sentimentCounts[msgSentiment];
+      const time = Math.floor(getTimeBetween(fromDateTime, msgDate, units));
+      let counts = sentimentCounts[msgSentiment + 1];
 
       counts[time] = (counts[time] || 0) + 1;
     }
 
     // Make sure there is a count at each interval.
     for (let time = 0; time <= getMaximumXValue(timeFrame); time++) {
-      for (const counts of Object.values(sentimentCounts)) {
+      sentimentCounts.forEach(counts => {
         counts[time] = counts[time] || 0;
-      }
+      });
     }
 
-    return Object.entries(sentimentCounts).map(([sentiment, counts]) => {
+    const data = sentimentCounts.map((counts, index) => {
+      const sentiment = index - 1;
       return {
         id: sentiment,
         color: getSentimentColor(sentiment),
-        data: getCountsData(counts).sort((a, b) => a['x'] - b['x'])
-      }
+        data: getCountsData(counts)
+      };
     });
+
+    setGraphData([data[0], data[2], data[1]]);
   }
 
-  function getExportData(graphData, queryDate) {
-    if (graphData.length == 0) { return [] }
+  function getExportData(graphData) {
+    if (graphData.length == 0) {
+      return [];
+    }
 
     let exportData = [['']];
 
     graphData[0].data.forEach(dataPoint => {
       const date = new Date(
-        dateTime.getTime() + dataPoint['x'] * getUnits(timeFrame)
+        fromDateTime.getTime() + dataPoint['x'] * getUnits(timeFrame)
       );
       const str = `${date.getDate()}/${date.getMonth() + 1}`
         + `/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
@@ -185,10 +221,29 @@ function SentimentGraph(props) {
     });
 
     graphData.forEach(data => {
-      exportData.push([data.id, ...data.data.map(dataPoint => dataPoint['y'])]);
+      exportData.push([
+        getSentimentName(data.id),
+        ...data.data.map(dataPoint => dataPoint['y'])
+      ]);
     });
 
     return exportData;
+  }
+
+  async function getModelReport() {
+    const url = `${SERVER_URL}/twitch/report`;
+
+    fetch(url, { credentials: 'include' })
+      .then(response => response.json())
+      .then(result => {
+        if (!result.error) {
+          setPositiveStats(result['1']);
+          setNegativeStats(result['-1']);
+          setNeutralStats(result['0']);
+          setAverages(result['macro avg']);
+          setAccuracy(result['accuracy']);
+        }
+      });
   }
 
   return (
@@ -197,22 +252,41 @@ function SentimentGraph(props) {
         Hour={Hour}
         Day={Day}
         Week={Week}
-        setDateTime={setDateTime}
+        setFromDateTime={setFromDateTime}
+        setToDateTime={setToDateTime}
         setTimeFrame={setTimeFrame}
         getMessages={getMessages}
-        loading={loading}
+        setInfoSelected={setInfoSelected}
         minDate={minDate}
       />
       <SentimentGraphStats
         data={graphData}
       />
-      <div className='SentimentGraphBody'>
-        <Legend />
-        <StackedLineGraph
-          data={graphData}
-          maximumXValue={getMaximumXValue(timeFrame)}
-        />
-      </div>
+      {infoSelected ? (
+        <div className='SentimentGraphBody'>
+          <Info
+            positiveStats={positiveStats}
+            negativeStats={negativeStats}
+            neutralStats={neutralStats}
+            averages={averages}
+            accuracy={accuracy}
+          />
+        </div>
+      ) : (
+        <div className='SentimentGraphBody'>
+          <Legend />
+          <div className='Loader'>
+            <PropagateLoader
+              color={'#ffffff'}
+              loading={loading}
+            />
+          </div>
+          <StackedLineGraph
+            data={graphData}
+            maximumXValue={getMaximumXValue(timeFrame)}
+          />
+        </div>
+      )}
       <div className='SentimentGraphFooter'>
         <CSVLink
           data={getExportData(graphData)}

@@ -15,15 +15,18 @@ const Button = styled.button`
   }
 `;
 
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+const CLIENT_URL = process.env.REACT_APP_CLIENT_URL;
+
 function LoginButton(props) {
   function login() {
-    window.location = 'http://localhost:3000/twitch/login';
+    window.location = `${SERVER_URL}/twitch/login`;
   }
 
   function logout() {
-    fetch('http://localhost:3000/twitch/logout', { credentials: 'include' })
+    fetch(`${SERVER_URL}/twitch/logout`, { credentials: 'include' })
       .then(response => response.json())
-      .then(result => { window.location = 'http://localhost:5000/'; })
+      .then(result => { window.location = CLIENT_URL; })
       .catch(err => console.error(err));
   }
 

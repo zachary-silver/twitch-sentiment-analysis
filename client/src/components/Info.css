@@ -1,0 +1,26 @@
+.Info {
+  height: 100%;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.Info div {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.InfoBody p {
+  text-align: left;
+}
+
+.Info table, .Info th, .Info td {
+  outline: 1px solid black;
+}
+
+.Info th, .Info td {
+  padding: 25px;
+}

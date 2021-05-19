@@ -1,24 +1,44 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './SentimentGraphStats.css'
 
 function SentimentGraphStats(props) {
-  const positiveMessages = getCountsOfType(props.data, 'positive');
-  const negativeMessages = getCountsOfType(props.data, 'negative');
-  const neutralMessages = getCountsOfType(props.data, 'neutral');
+  const [positiveMessages, setPositiveMessages] = useState(0);
+  const [negativeMessages, setNegativeMessages] = useState(0);
+  const [neutralMessages, setNeutralMessages] = useState(0);
   const totalMessages = positiveMessages + negativeMessages + neutralMessages;
   const netMessageSentiment = totalMessages > 0
     ? ((positiveMessages - negativeMessages) / totalMessages).toFixed(2)
     : 0;
 
-  function getCountsOfType(data, type) {
-    return data
-      .filter(element => element.id.match(type))
+  useEffect(() => getCounts(props.data), [props.data]);
+
+  async function getCounts(data) {
+    getCountsOfType(data, 1);
+    getCountsOfType(data, -1);
+    getCountsOfType(data, 0);
+  }
+
+  async function getCountsOfType(data, type) {
+    const count = data
+      .filter(element => element.id === type)
       .reduce((total, curr) => {
         return total + curr.data
           .reduce((total, curr) => {
             return total + curr['y'];
           }, 0)
       }, 0);
+
+    switch(type) {
+      case -1:
+        setNegativeMessages(count);
+        break;
+      case 0:
+        setNeutralMessages(count);
+        break;
+      case 1:
+        setPositiveMessages(count);
+        break;
+    }
   }
 
   return (

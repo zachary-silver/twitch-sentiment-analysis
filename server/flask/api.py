@@ -14,11 +14,15 @@ def get_sentiment_label(s):
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    sentiments = [get_sentiment_label(sentiment)
-            for sentiment in analyze.predict_messages([message['content']
-                for message in request.json['messages']], MODEL)]
+    sentiments = analyze.predict_messages([message['content']
+        for message in request.json['messages']], MODEL).tolist()
 
     return { 'sentiments': sentiments }
+
+
+@app.route('/report', methods=['GET'])
+def report():
+    return analyze.get_classification_report(MODEL, './analysis')
 
 
 if __name__ == '__main__':

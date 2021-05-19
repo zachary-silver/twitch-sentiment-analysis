@@ -1,12 +1,14 @@
 const tmi    = require('tmi.js');
-const config = require('./config.js');
+const dotenv = require('dotenv');
 const db     = require('./database/index');
+
+dotenv.config();
 
 const msInMinute = 60 * 1000;
 const bufferSize = 1000;
 
 let messages = [];
-let client = getIRCClient();
+let client;
 
 db.mongoose
   .connect(db.url, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -17,6 +19,10 @@ db.mongoose
     console.error(`Failed to connect to ${db.url}`, err);
     process.exit();
   });
+
+db.populateModels(db);
+
+client = getIRCClient();
 
 setTimeout(updateIRCClient, msInMinute * 10);
 
@@ -35,7 +41,7 @@ async function getIRCOptions() {
   const options = {
     identity: {
       username: 'tcsa-bot',
-      password: config.TWITCH_IRC_TOKEN
+      password: process.env.TWITCH_IRC_TOKEN
     },
     channels: channels
   };
@@ -64,7 +70,8 @@ function handleMessage(target, context, msg, self) {
   });
 
   if (messages.length > bufferSize) {
-    db.models.MessageModel.insertMany(messages, (err, result) => {
+    const channel = target.substring(1);
+    db.models[`${channel}MessageModel`].insertMany(messages, (err, result) => {
       if (err) { console.error(err) }
     });
 

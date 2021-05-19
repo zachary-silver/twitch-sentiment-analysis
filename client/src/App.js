@@ -4,13 +4,15 @@ import Header from './components/containers/Header';
 import Body from './components/containers/Body';
 import Footer from './components/containers/Footer';
 
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
 function App() {
   const [session, setSession] = useState({});
 
   useEffect(fetchSession, []);
 
   function fetchSession() {
-    fetch('http://localhost:3000/twitch/user', { credentials: 'include' })
+    fetch(`${SERVER_URL}/twitch/user`, { credentials: 'include' })
       .then(response => response.json())
       .then(result => setSession(result))
       .catch(err => console.error(err));

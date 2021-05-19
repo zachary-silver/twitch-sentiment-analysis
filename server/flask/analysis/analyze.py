@@ -47,6 +47,30 @@ def predict_messages(messages, model):
     return model.predict(get_vectors(messages))
 
 
+def get_classification_report(model, analysis_dir):
+    twitch_file = '{}/data/labeled_dataset.csv'.format(analysis_dir)
+    emotes_file = '{}/lexica/emote_average.tsv'.format(analysis_dir)
+
+    twitch_messages, twitch_sentiments = get_twitch_data(twitch_file)
+    emotes, emotes_sentiments = get_twitch_lexicon_data(emotes_file)
+
+    messages = fit_and_get_vectors(twitch_messages + emotes)
+    sentiments = twitch_sentiments + emotes_sentiments
+
+    _, x_test, _, y_test = train_test_split(
+            messages,
+            sentiments,
+            test_size=TEST_SIZE,
+            random_state=RANDOM_STATE
+            )
+
+    predictions = model.predict(x_test)
+
+    report = classification_report(y_test, predictions, output_dict=True)
+
+    return report
+
+
 def get_mlp_model(messages, sentiments):
     mlp_classifier = MLPClassifier(
             solver='adam',
@@ -143,11 +167,6 @@ def setup(analysis_dir):
 
 
 def main():
-    # twitch_file = './data/temp.csv'
-    # setup('.')
-    # twitch_messages, twitch_sentiments = get_twitch_data(twitch_file)
-    # model = load_model('./models/rf_with_emotes')
-    # print(predict_messages(twitch_messages, model))
     twitch_file = './data/labeled_dataset.csv'
     emotes_file = './lexica/emote_average.tsv'
 

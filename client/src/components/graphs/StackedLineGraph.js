@@ -77,7 +77,7 @@ const Graph = (data, maximumXValue) => (
     pointBorderColor={{ from: 'serieColor' }}
     pointLabelYOffset={-12}
     enableArea={true}
-    areaOpacity={0.4}
+    areaOpacity={0.2}
     useMesh={false}
     theme={theme}
     colors={{ datum: 'color' }}
@@ -85,9 +85,36 @@ const Graph = (data, maximumXValue) => (
 );
 
 function StackedLineGraph(props) {
+  const temp1 = props.data.map(entry => {
+    return {
+      id: entry.id,
+      color: entry.color,
+      data: entry.data.map(data => {
+        return { 'x': data.x, 'y': Math.trunc(data.y * 1.05) };
+      })
+    };
+  });
+
+  const temp2 = props.data.map(entry => {
+    return {
+      id: entry.id,
+      color: entry.color,
+      data: entry.data.map(data => {
+        return { 'x': data.x, 'y': Math.trunc(data.y * .95) };
+      })
+    };
+  });
+
+  let graphData = [];
+
+  temp2.forEach((entry, index) => {
+    graphData.push(entry);
+    graphData.push(temp1[index]);
+  });
+
   return (
     <div className="StackedLineGraph">
-      {Graph(props.data, props.maximumXValue)}
+      {Graph(graphData, props.maximumXValue)}
     </div>
   );
 }

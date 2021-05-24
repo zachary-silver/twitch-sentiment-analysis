@@ -15,7 +15,7 @@ function SentimentGraphOptions(props) {
   useEffect(() => props.setToDateTime(toDateTime), [toDateTime]);
 
   async function handleRetrieve(fromDateTime, toDateTime) {
-    props.getMessages(fromDateTime, toDateTime);
+    props.fetchMessages(fromDateTime, toDateTime);
     props.setInfoSelected(false);
   }
 

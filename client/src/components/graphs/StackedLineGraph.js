@@ -1,12 +1,11 @@
 import React from 'react'
-// install (please make sure versions match peerDependencies)
-// yarn add @nivo/core @nivo/line
 import { ResponsiveLine } from '@nivo/line'
 // make sure parent container have a defined height when using
 // responsive component, otherwise height will be 0 and
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
+
 const theme = {
   axis: {
     tickColor: "#eee",
@@ -85,31 +84,37 @@ const Graph = (data, maximumXValue) => (
 );
 
 function StackedLineGraph(props) {
-  const temp1 = props.data.map(entry => {
+  const upper = props.data.map(entry => {
     return {
       id: entry.id,
       color: entry.color,
       data: entry.data.map(data => {
-        return { 'x': data.x, 'y': Math.trunc(data.y * 1.05) };
+        return {
+          'x': data.x,
+          'y': Math.trunc(data.y * (1.0 + entry.margin_of_error / 100.0))
+        };
       })
     };
   });
 
-  const temp2 = props.data.map(entry => {
+  const lower = props.data.map(entry => {
     return {
       id: entry.id,
       color: entry.color,
       data: entry.data.map(data => {
-        return { 'x': data.x, 'y': Math.trunc(data.y * .95) };
+        return {
+          'x': data.x,
+          'y': Math.trunc(data.y * (1.0 - entry.margin_of_error / 100.0))
+        };
       })
     };
   });
 
   let graphData = [];
 
-  temp2.forEach((entry, index) => {
+  lower.forEach((entry, index) => {
     graphData.push(entry);
-    graphData.push(temp1[index]);
+    graphData.push(upper[index]);
   });
 
   return (

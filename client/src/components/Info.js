@@ -1,17 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import './Info.css'
+import {getMarginOfError} from './Util'
 
 function Info(props) {
-  function getMarginOfError(accuracy, samples) {
-    const standardDeviations = 1.96; // 95% CI
-
-    return Math.round(
-      standardDeviations
-      * Math.sqrt((1.0 - accuracy) * accuracy / samples)
-      * 100
-    );
-  }
-
   return (
     <div className='Info'>
       <div className='InfoHeader'>
@@ -33,16 +24,7 @@ function Info(props) {
             <td>{props.positiveStats['recall']?.toFixed(2)}</td>
             <td>{props.positiveStats['f1-score']?.toFixed(2)}</td>
             <td>{props.positiveStats['support']?.toFixed(2)}</td>
-            <td>
-              {
-                props.positiveStats['precision'] ?
-                  getMarginOfError(
-                    props.positiveStats['precision'],
-                    props.positiveStats['support']
-                  ) + '%' :
-                  null
-              }
-            </td>
+            <td>{(props.positiveStats['margin_of_error'] || 0) + '%'}</td>
           </tr>
           <tr>
             <td>Negative</td>
@@ -50,16 +32,7 @@ function Info(props) {
             <td>{props.negativeStats['recall']?.toFixed(2)}</td>
             <td>{props.negativeStats['f1-score']?.toFixed(2)}</td>
             <td>{props.negativeStats['support']?.toFixed(2)}</td>
-            <td>
-              {
-                props.negativeStats['precision'] ?
-                  getMarginOfError(
-                    props.negativeStats['precision'],
-                    props.negativeStats['support']
-                  ) + '%' :
-                  null
-              }
-            </td>
+            <td>{(props.negativeStats['margin_of_error'] || 0) + '%'}</td>
           </tr>
           <tr>
             <td>Neutral</td>
@@ -67,16 +40,7 @@ function Info(props) {
             <td>{props.neutralStats['recall']?.toFixed(2)}</td>
             <td>{props.neutralStats['f1-score']?.toFixed(2)}</td>
             <td>{props.neutralStats['support']?.toFixed(2)}</td>
-            <td>
-              {
-                props.neutralStats['precision'] ?
-                  getMarginOfError(
-                    props.neutralStats['precision'],
-                    props.neutralStats['support']
-                  ) + '%' :
-                  null
-              }
-            </td>
+            <td>{(props.neutralStats['margin_of_error'] || 0) + '%'}</td>
           </tr>
           <tr>
             <td colspan='6'></td>
@@ -87,16 +51,7 @@ function Info(props) {
             <td>{props.averages['recall']?.toFixed(2)}</td>
             <td>{props.averages['f1-score']?.toFixed(2)}</td>
             <td>{props.averages['support']?.toFixed(2)}</td>
-            <td>
-              {
-                props.averages['precision'] ?
-                  getMarginOfError(
-                    props.averages['precision'],
-                    props.averages['support']
-                  ) + '%' :
-                  null
-              }
-            </td>
+            <td>{(props.averages['margin_of_error'] || 0) + '%'}</td>
           </tr>
           <tr>
             <td colspan='6'></td>

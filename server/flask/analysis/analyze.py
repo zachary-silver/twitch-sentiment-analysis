@@ -35,7 +35,7 @@ def load_model(file):
 
 
 def predict_message(message, model):
-    return model.predict(get_vector(preprocess(message)).reshape(1, -1))
+    return int(model.predict(get_vector(preprocess(message)).reshape(1, -1))[0])
 
 
 def predict_messages(messages, model):
@@ -44,7 +44,7 @@ def predict_messages(messages, model):
 
     messages = [preprocess(message) for message in messages]
 
-    return model.predict(get_vectors(messages))
+    return model.predict(get_vectors(messages)).tolist()
 
 
 def get_classification_report(model, analysis_dir):

@@ -11,7 +11,7 @@ MODEL = analyze.load_model('./analysis/models/rf_with_emotes')
 @app.route('/predict', methods=['POST'])
 def predict():
     sentiments = analyze.predict_messages([message['content']
-        for message in request.json['messages']], MODEL).tolist()
+        for message in request.json['messages']], MODEL)
 
     return { 'sentiments': sentiments }
 

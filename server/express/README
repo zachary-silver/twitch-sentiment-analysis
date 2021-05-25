@@ -1,2 +1,6 @@
+~~~ server ~~~
 npm install
 npm start
+
+~~~ chatbot ~~~
+node chatbot.js

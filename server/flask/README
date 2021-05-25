@@ -1,4 +1,4 @@
 pip install -r requirements.txt
 export FLASK_APP=api.py
-export FLASK_ENV=development
+export FLASK_ENV=production
 flask run --host=localhost --port=8080

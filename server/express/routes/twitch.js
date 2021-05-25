@@ -63,7 +63,7 @@ passport.use('twitch', new OAuth2Strategy({
     tokenURL: process.env.TWITCH_TOKEN_URL,
     clientID: process.env.TWITCH_CLIENT_ID,
     clientSecret: process.env.TWITCH_SECRET,
-    callbackURL: process.env.CALLBACK_URL,
+    callbackURL: process.env.TWITCH_CALLBACK_URL,
     state: true
   },
   (accessToken, refreshToken, profile, callback) => {
@@ -98,8 +98,8 @@ router.get('/login', passport.authenticate('twitch', { scope: 'user_read' }));
 router.get('/login/callback',
   passport.authenticate('twitch',
     {
-      successRedirect: 'http://localhost:5000/',
-      failureRedirect: 'http://localhost:5000/'
+      successRedirect: process.env.SERVER_CALLBACK_URL,
+      failureRedirect: process.env.SERVER_CALLBACK_URL
     }
   )
 );
@@ -175,7 +175,7 @@ async function retrieveSentiments(result, res) {
   const nextPage = result.nextPage;
   const messages = result.messages;
 
-  fetch('http://localhost:8080/predict', {
+  fetch(`${process.env.ANALYSIS_URL}/predict`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ messages: messages })
@@ -231,7 +231,7 @@ router.get('/report', (req, res) => {
   const user = req.session?.passport?.user;
 
   if (user) {
-    fetch('http://localhost:8080/report')
+    fetch(`${process.env.ANALYSIS_URL}/report`)
       .then(response => response.json())
       .then(result => res.send(result));
   } else {
@@ -280,30 +280,6 @@ router.get('/channel', (req, res) => {
       .then(result => res.send(result));
   } else {
     res.send({ error: 'No valid user session.' });
-  }
-});
-
-router.get('/videos', (req, res) => {
-  const user = req.session?.passport?.user;
-
-  if (user) {
-    const userId = 71092938;
-    const url = `${process.env.TWITCH_API_URL}/videos` +
-                `?user_id=${userId}`;
-    const options = {
-      headers: {
-        'Client-Id': process.env.TWITCH_CLIENT_ID,
-        'Authorization': 'Bearer ' + user.accessToken,
-        'Content-Type': 'x-www-form-urlencoded',
-        'Accept': 'application/json'
-      }
-    };
-
-    fetch(url, options)
-      .then(response => response.json())
-      .then(result => res.send(result));
-  } else {
-    res.send({ error: 'No valid user session' });
   }
 });
 

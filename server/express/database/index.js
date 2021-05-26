@@ -3,7 +3,7 @@ const dotenv   = require('dotenv');
 
 dotenv.config();
 
-async function populateModels(db) {
+async function populateModels(db, callback = null) {
   db.models.UserModel
     .find()
     .exec((err, result) => {
@@ -11,11 +11,16 @@ async function populateModels(db) {
         console.error(err);
       } else {
         result.forEach(user => {
-          const channel = user['display_name'].toLowerCase();
-          db.models[`${channel}MessageModel`] = new db.mongoose.model(
-            `${channel}_messages`, db.schemas.MessageSchema
-          );
+          let channel = user['display_name'].toLowerCase();
+
+          if (!db.models[`${channel}MessageModel`]) {
+            db.models[`${channel}MessageModel`] = new db.mongoose.model(
+              `${channel}_messages`, db.schemas.MessageSchema
+            );
+          }
         });
+
+        if (callback) { callback(); }
       }
     });
 }

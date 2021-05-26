@@ -67,21 +67,29 @@ passport.use('twitch', new OAuth2Strategy({
     state: true
   },
   (accessToken, refreshToken, profile, callback) => {
-    const user = {
+    let user = {
       accessToken: accessToken,
       refreshToken: refreshToken,
       ...profile.data[0]
     }
 
+    // Treat my account as moonmoon's for testing
+    if (user.display_name == 'Creamyzor') {
+      user.display_name = 'MOONMOON';
+      profile.data[0]['display_name'] = 'MOONMOON';
+    }
+
     db.models.UserModel
       .find({'id': user.id})
-      .exec((err, result) => {
+      .exec(async (err, result) => {
         if (!err && result.length == 0) {
-          db.models.UserModel.create({ ...profile.data[0] }, handleError);
+          db.models.UserModel.create({ ...profile.data[0] }, () => {
+            db.populateModels(db, () => callback(null, user));
+          });
+        } else {
+          callback(null, user);
         }
       });
-
-    callback(null, user);
   }
 ));
 
@@ -153,21 +161,17 @@ router.get('/messages/oldest', (req, res) => {
   if (user) {
     let channel = user.display_name.toLowerCase();
 
-    if (channel === 'creamyzor') {
-      channel = 'moonmoon';
-    }
-
     db.models[`${channel}MessageModel`]
       .findOne()
       .exec((err, result) => {
         if (!err) {
           res.send({ message: result });
         } else {
-          res.send({ message: {} });
+          res.send({ message: null });
         }
       });
   } else {
-    res.send({ message: {} });
+    res.send({ message: null });
   }
 });
 
@@ -203,10 +207,6 @@ router.get('/messages/:from-:to/:page', (req, res) => {
     const to = new Date(parseInt(req.params.to)).toISOString();
     const page = parseInt(req.params.page);
     let channel = user.display_name.toLowerCase();
-
-    if (channel === 'creamyzor') {
-      channel = 'moonmoon';
-    }
 
     db.models[`${channel}MessageModel`]
       .find({

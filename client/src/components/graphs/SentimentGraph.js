@@ -77,8 +77,8 @@ function SentimentGraph(props) {
     fetch(`${SERVER_URL}/twitch/messages/oldest`, { credentials: 'include' })
       .then(response => response.json())
       .then(result => {
-        const ts = result.message['time_stamp'];
-        ts ? setMinDate(new Date(ts)) : setMinDate(new Date());
+        const msg = result.message;
+        msg ? setMinDate(new Date(msg['time_stamp'])) : setMinDate(new Date());
       });
   }
 

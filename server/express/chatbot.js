@@ -20,11 +20,10 @@ db.mongoose
     process.exit();
   });
 
-db.populateModels(db);
-
-client = getIRCClient();
-
-setTimeout(updateIRCClient, msInMinute * 10);
+db.populateModels(db, () => {
+  client = getIRCClient();
+  setTimeout(updateIRCClient, msInMinute * 10);
+});
 
 async function updateIRCClient() {
   (await client).disconnect().catch(console.error);

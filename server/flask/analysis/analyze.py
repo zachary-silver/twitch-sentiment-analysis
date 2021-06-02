@@ -16,7 +16,7 @@ MIN_DOC_FREQUENCY = 1
 MAX_DOC_FREQUENCY = 0.80
 TEST_SIZE = 0.20
 RANDOM_STATE = 0
-ITERATIONS = 50
+ITERATIONS = 75
 
 VECTORIZER = TfidfVectorizer(
         max_features=MAX_WORDS,
@@ -183,9 +183,10 @@ def main():
             random_state=RANDOM_STATE
             )
 
-    model = get_rf_model(x_train, y_train)
-    # model = load_model('./models/rf_with_emotes')
-    # save_model(model, './models/rf_with_emotes')
+    # model = get_rf_model(x_train, y_train)
+    # model = get_mlp_model(x_train, y_train)
+    model = load_model('./models/rf')
+    # save_model(model, './models/mlp')
     predictions = model.predict(x_test)
 
     print(classification_report(y_test, predictions))

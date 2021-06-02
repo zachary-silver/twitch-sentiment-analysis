@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 analyze.setup('./analysis')
 
-MODEL = analyze.load_model('./analysis/models/rf_with_emotes')
+MODEL = analyze.load_model('./analysis/models/rf')
 
 
 @app.route('/predict', methods=['POST'])
